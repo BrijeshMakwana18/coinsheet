@@ -41,7 +41,7 @@ export default function Button({
         <Text
           style={{
             fontSize: perfectSize(18),
-            // fontFamily: fonts.quicksandBold,
+            //fontFamily: fonts.quicksandBold,
             color: disabled
               ? colors.inactiveButtonTitleColor
               : colors.activeButtonTitleColor,
