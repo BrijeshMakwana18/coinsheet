@@ -20,7 +20,7 @@ export default styles = StyleSheet.create({
   },
   title: {
     textAlign: 'center',
-    // fontFamily: fonts.quicksandBold,
+    //fontFamily: fonts.quicksandBold,
     fontSize: perfectSize(56),
     color: colors.titleColor,
     opacity: 0.5,
@@ -32,7 +32,7 @@ export default styles = StyleSheet.create({
     backgroundColor: colors.textInputBackgroundColor,
     borderRadius: perfectSize(12),
     fontSize: perfectSize(23),
-    // fontFamily: fonts.quicksandBold,
+    //fontFamily: fonts.quicksandBold,
     color: colors.titleColor,
   },
   bottomView: {
@@ -45,7 +45,7 @@ export default styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: perfectSize(14),
     color: colors.titleColor,
-    // fontFamily: fonts.avenirLight,
+    //fontFamily: fonts.avenirLight,
     marginTop: '5%',
   },
 });

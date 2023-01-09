@@ -142,7 +142,7 @@ function Login(props) {
               <TouchableOpacity
                 onPress={() => props.navigation.goBack()}
                 style={styles.header}>
-                {/* <Image source={images.backArrow} style={styles.backArrow} /> */}
+                <Image source={images.backArrow} style={styles.backArrow} />
               </TouchableOpacity>
             </Animated.View>
             <Animated.View
@@ -187,7 +187,7 @@ function Login(props) {
             top: perfectSize(20),
             fontSize: perfectSize(15),
             color: colors.primaryAppColor,
-            // fontFamily: fonts.quicksandRegular,
+            //fontFamily: fonts.quicksandRegular,
             fontWeight: '600',
             letterSpacing: perfectSize(0.5),
           }}>
@@ -201,14 +201,10 @@ function Login(props) {
           onPress={() => handleLoginPress(email, password)}
           // loading={true}
         />
-        {/* <Text style={styles.bottomText}>
+        <Text style={styles.bottomText}>
           By logging in, you are agreeing to our{'\n'}
-          <Text style={{fontFamily: fonts.quicksandBold}}>
-            Terms and Conditions
-          </Text>{' '}
-          and{' '}
-          <Text style={{fontFamily: fonts.quicksandBold}}>Privacy Policy</Text>{' '}
-        </Text> */}
+          <Text>Terms and Conditions</Text> and <Text>Privacy Policy</Text>{' '}
+        </Text>
       </View>
       <Animated.View
         style={{
@@ -231,7 +227,7 @@ function Login(props) {
         }}>
         <Text
           style={{
-            // fontFamily: fonts.avenirMedium,
+            //fontFamily: fonts.avenirMedium,
             fontSize: perfectSize(21),
             color: colors.titleColor,
             textAlign: 'center',
@@ -244,13 +240,13 @@ function Login(props) {
     </>
   );
 }
-// const mapStateToProps = state => {
-//   return {LoginReducer: state.LoginReducer};
-// };
+const mapStateToProps = state => {
+  return {LoginReducer: state.LoginReducer};
+};
 
-// const mapDispatchToProps = {
-//   handleLogin: handleLogin,
-//   handleSignup: handleSignup,
-// };
+const mapDispatchToProps = {
+  handleLogin: handleLogin,
+  handleSignup: handleSignup,
+};
 
-export default Login;
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

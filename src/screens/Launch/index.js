@@ -59,7 +59,7 @@ export default function Launch({navigation}) {
         barStyle="light-content"
       />
 
-      {/* <Animated.Image
+      <Animated.Image
         source={images.launchScreenLogo}
         style={{
           height: '60%',
@@ -67,7 +67,7 @@ export default function Launch({navigation}) {
           marginTop: slideImage,
         }}
         resizeMode="contain"
-      /> */}
+      />
       <Animated.View
         style={{
           position: 'absolute',
@@ -110,7 +110,7 @@ export default function Launch({navigation}) {
           />
           <Text
             style={{
-            //   fontFamily: fonts.quicksandBold,
+              //fontFamily: fonts.quicksandBold,
               color: colors.titleColor,
               fontSize: perfectSize(20),
             }}>

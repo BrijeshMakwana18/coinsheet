@@ -140,7 +140,7 @@ function Signup(props) {
               <TouchableOpacity
                 onPress={() => props.navigation.goBack()}
                 style={styles.header}>
-                {/* <Image source={images.backArrow} style={styles.backArrow} /> */}
+                <Image source={images.backArrow} style={styles.backArrow} />
               </TouchableOpacity>
             </Animated.View>
             <Animated.View
@@ -200,14 +200,10 @@ function Signup(props) {
           title={strings.signupScreen.buttonTitle}
           onPress={() => handleSignupPress(username, email, password)}
         />
-        {/* <Text style={styles.bottomText}>
+        <Text style={styles.bottomText}>
           By logging in, you are agreeing to our{'\n'}
-          <Text style={{fontFamily: fonts.quicksandBold}}>
-            Terms and Conditions
-          </Text>{' '}
-          and{' '}
-          <Text style={{fontFamily: fonts.quicksandBold}}>Privacy Policy</Text>{' '}
-        </Text> */}
+          <Text>Terms and Conditions</Text> and <Text>Privacy Policy</Text>{' '}
+        </Text>
       </View>
       <Animated.View
         style={{
@@ -230,7 +226,7 @@ function Signup(props) {
         }}>
         <Text
           style={{
-            // fontFamily: fonts.avenirMedium,
+            //fontFamily: fonts.avenirMedium,
             fontSize: perfectSize(21),
             color: 'white',
             textAlign: 'center',
@@ -244,13 +240,13 @@ function Signup(props) {
   );
 }
 
-// const mapStateToProps = state => {
-//   const {LoginReducer: LoginReducer} = state;
-//   return {state: state};
-// };
+const mapStateToProps = state => {
+  const {LoginReducer: LoginReducer} = state;
+  return {state: state};
+};
 
-// const mapDispatchToProps = {
-//   handleSignup: handleSignup,
-// };
+const mapDispatchToProps = {
+  handleSignup: handleSignup,
+};
 
-export default Signup;
+export default connect(mapStateToProps, mapDispatchToProps)(Signup);

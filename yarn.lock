@@ -1139,6 +1139,7 @@
     "merge-options" "^3.0.4"
 
 "@react-native-community/art@^1.2.0", "@react-native-community/art@github:react-native-art/art":
+  "integrity" "sha512-BqQLE0fDoa+BCNyZG4ItynqGzVi1KMEetLTzSSt8h0B2w44hV0UYAxZ45FcJ+FcOvGiJXD39vsU5vU2vv3zPQA=="
   "resolved" "git+ssh://git@github.com/react-native-art/art.git#e4a97cd03ec992182d326286be04b0b49267ffef"
   "version" "1.2.0"
   dependencies:
