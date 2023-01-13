@@ -9,7 +9,7 @@ import {
   AddExpense,
   AddIncome,
   TransactionSuccess,
-  AddEndpoint,
+  InvestmentProfitLoss,
 } from '../screens';
 import {removeListeners} from '../utils/globalMethods';
 const Stack = createStackNavigator();
@@ -62,8 +62,8 @@ export default class TransactionStack extends Component {
           options={{header: () => null}}
         />
         <Stack.Screen
-          name="Endpoint"
-          component={AddEndpoint}
+          name="InvestmentProfitLoss"
+          component={InvestmentProfitLoss}
           options={{header: () => null}}
         />
         <Stack.Screen
