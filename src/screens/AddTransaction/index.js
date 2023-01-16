@@ -35,8 +35,8 @@ const data = [
     backgroundColor: colors.primaryAppColor,
   },
   {
-    label: 'Endpoint',
-    screenName: 'Endpoint',
+    label: 'Profit/Loss',
+    screenName: 'InvestmentProfitLoss',
   },
 ];
 class AddTransaction extends Component {
