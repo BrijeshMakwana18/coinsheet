@@ -9,7 +9,7 @@ import Statistics from './Statistics';
 import TransactionSuccess from './TransactionSuccess';
 import TransactionList from './TransactionList';
 import AllExpenseCat from './AllExpenseCat';
-import AddEndpoint from './AddTransaction/AddEndpoint';
+import InvestmentProfitLoss from './AddTransaction/InvestmentProfitLoss';
 export {
   Launch,
   Login,
@@ -22,5 +22,5 @@ export {
   TransactionSuccess,
   TransactionList,
   AllExpenseCat,
-  AddEndpoint,
+  InvestmentProfitLoss,
 };

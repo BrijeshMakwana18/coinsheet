@@ -70,11 +70,14 @@ const strings = {
     want: 'Want',
     investment: 'Investment',
   },
-  addEndpoint: {
-    headerTitle: 'Add Endpoint',
+  profitloss: {
+    headerTitle: 'Add Profit/Loss',
     buttonTitle: 'Save',
-    ipPlaceholder: 'Enter IP Address',
-    portPlaceHolder: 'Port Placeholder',
+    type: 'Type',
+    profit: 'Profit',
+    loss: 'Loss',
+    amountPlaceholder: 'Amount',
+    notesPlaceholder: 'Notes ...',
   },
   transactionSuccess: {
     successMessage: 'Your transaction is successfully \nadded to your account',
