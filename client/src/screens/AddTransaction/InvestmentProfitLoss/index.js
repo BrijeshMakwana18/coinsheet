@@ -161,38 +161,38 @@ class InvestmentProfitLoss extends Component {
       expenseType: 'profitloss',
       id: this.props.route.params.item._id,
     };
-    // this.props.handleAddExpense({
-    //   expense: updatedRedord,
-    //   onSuccess: response => {
-    //     const params = {
-    //       id: this.props.LoginReducer.user.id,
-    //       dashboardType: 'all',
-    //     };
-    //     console.log('Expense added', response);
-    //     this.props.fetchDashboard({
-    //       params,
-    //     });
-    //     this.props.fetchTransactions({
-    //       params: {
-    //         id: this.props.LoginReducer.user.id,
-    //       },
-    //     });
-    //     if (response.responseType) {
-    //       this.props.navigation.navigate('TransactionSuccess', {
-    //         isUpdate: true,
-    //         isFromExpense: true,
-    //         amount: response.transaction.amount,
-    //         notes: decryptV1(response.transaction.notes),
-    //         transactionDate: response.transaction.transactionDate,
-    //         selectedCat: response.transaction.transactionCat,
-    //         expenseType: response.transaction.expenseType,
-    //       });
-    //     }
-    //   },
-    //   onError: error => {
-    //     console.log('Add expense error', error);
-    //   },
-    // });
+    this.props.handleAddExpense({
+      expense: updatedRedord,
+      onSuccess: response => {
+        const params = {
+          id: this.props.LoginReducer.user.id,
+          dashboardType: 'all',
+        };
+        console.log('Expense added', response);
+        this.props.fetchDashboard({
+          params,
+        });
+        this.props.fetchTransactions({
+          params: {
+            id: this.props.LoginReducer.user.id,
+          },
+        });
+        if (response.responseType) {
+          this.props.navigation.navigate('TransactionSuccess', {
+            isUpdate: true,
+            isFromExpense: true,
+            amount: response.transaction.amount,
+            notes: decryptV1(response.transaction.notes),
+            transactionDate: response.transaction.transactionDate,
+            selectedCat: response.transaction.transactionCat,
+            expenseType: response.transaction.expenseType,
+          });
+        }
+      },
+      onError: error => {
+        console.log('Add expense error', error);
+      },
+    });
   };
 
   handleOnSubmit = async () => {
@@ -206,43 +206,43 @@ class InvestmentProfitLoss extends Component {
       transactionCat: selectedExpenseType,
       expenseType: 'profitloss',
     };
-    // this.props.handleAddExpense({
-    //   expense: expense,
-    //   token: this.props.LoginReducer.user.token,
-    //   onSuccess: response => {
-    //     const dashboardParams = {
-    //       id: this.props.LoginReducer.user.id,
-    //       dashboardType: 'all',
-    //     };
-    //     const statisticsParams = {
-    //       id: this.props.LoginReducer.user.id,
-    //       statisticsType: 'all',
-    //     };
-    //     console.log('Expense added', response);
-    //     this.props.fetchDashboard({
-    //       params: dashboardParams,
-    //       token: this.props.LoginReducer.user.token,
-    //     });
-    //     this.props.fetchTransactions({
-    //       params: {
-    //         id: this.props.LoginReducer.user.id,
-    //       },
-    //     });
-    //     if (response.responseType) {
-    //       this.props.navigation.navigate('TransactionSuccess', {
-    //         isFromExpense: true,
-    //         amount: response.transaction.amount,
-    //         notes: decryptV1(response.transaction.notes),
-    //         transactionDate: response.transaction.transactionDate,
-    //         selectedCat: response.transaction.transactionCat,
-    //         expenseType: response.transaction.expenseType,
-    //       });
-    //     }
-    //   },
-    //   onError: error => {
-    //     console.log('Add expense error', error);
-    //   },
-    // });
+    this.props.handleAddExpense({
+      expense: expense,
+      token: this.props.LoginReducer.user.token,
+      onSuccess: response => {
+        const dashboardParams = {
+          id: this.props.LoginReducer.user.id,
+          dashboardType: 'all',
+        };
+        const statisticsParams = {
+          id: this.props.LoginReducer.user.id,
+          statisticsType: 'all',
+        };
+        console.log('Expense added', response);
+        this.props.fetchDashboard({
+          params: dashboardParams,
+          token: this.props.LoginReducer.user.token,
+        });
+        this.props.fetchTransactions({
+          params: {
+            id: this.props.LoginReducer.user.id,
+          },
+        });
+        if (response.responseType) {
+          this.props.navigation.navigate('TransactionSuccess', {
+            isFromExpense: true,
+            amount: response.transaction.amount,
+            notes: decryptV1(response.transaction.notes),
+            transactionDate: response.transaction.transactionDate,
+            selectedCat: response.transaction.transactionCat,
+            expenseType: response.transaction.expenseType,
+          });
+        }
+      },
+      onError: error => {
+        console.log('Add expense error', error);
+      },
+    });
   };
   render() {
     const {
