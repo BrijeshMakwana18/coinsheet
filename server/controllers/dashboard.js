@@ -18,6 +18,10 @@ const transactionCategories = [
   "other",
 ];
 
+const date = new Date();
+const firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
+const lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+
 router.post("/", authenticateToken, async (req, res) => {
   const { id } = req.body;
   try {
@@ -68,6 +72,7 @@ router.post("/", authenticateToken, async (req, res) => {
         },
       },
     ]);
+
     let totalTax = await Transaction.aggregate([
       {
         $match: {
@@ -249,6 +254,112 @@ router.post("/", authenticateToken, async (req, res) => {
     totalIncome = totalIncome?.[0]?.sum - totalTax?.[0]?.sum;
     totalExpense = totalExpense?.[0]?.sum;
     totalUSInvestment = totalUSInvestment?.[0]?.sum;
+
+    // Current Month
+    let currentMonthExpenses = await Transaction.aggregate([
+      {
+        $match: {
+          $and: [
+            {
+              userId: id,
+            },
+            { type: "debit" },
+            { transactionCat: { $ne: "tax" } },
+            { transactionDate: { $gte: firstDay } },
+            { transactionDate: { $lte: lastDay } },
+          ],
+        },
+      },
+      {
+        $group: {
+          _id: null,
+          sum: {
+            $sum: "$amount",
+          },
+        },
+      },
+    ]);
+    let currentMonthNeeds = await Transaction.aggregate([
+      {
+        $match: {
+          $and: [
+            {
+              userId: id,
+            },
+            { expenseType: "need" },
+            { transactionDate: { $gte: firstDay } },
+            { transactionDate: { $lte: lastDay } },
+          ],
+        },
+      },
+      {
+        $group: {
+          _id: null,
+          sum: {
+            $sum: "$amount",
+          },
+        },
+      },
+    ]);
+
+    let currentMonthWants = await Transaction.aggregate([
+      {
+        $match: {
+          $and: [
+            {
+              userId: id,
+            },
+            { expenseType: "want" },
+            { transactionDate: { $gte: firstDay } },
+            { transactionDate: { $lte: lastDay } },
+          ],
+        },
+      },
+      {
+        $group: {
+          _id: null,
+          sum: {
+            $sum: "$amount",
+          },
+        },
+      },
+    ]);
+    let currentMonthsCategories = [];
+    for (let i = 0; i < transactionCategories.length; i++) {
+      let temp = await Transaction.aggregate([
+        {
+          $match: {
+            $and: [
+              {
+                userId: id,
+              },
+              { transactionCat: transactionCategories[i] },
+              { transactionDate: { $gte: firstDay } },
+              { transactionDate: { $lte: lastDay } },
+            ],
+          },
+        },
+        {
+          $group: {
+            _id: null,
+            sum: {
+              $sum: "$amount",
+            },
+          },
+        },
+      ]);
+      currentMonthsCategories.push({
+        cat: transactionCategories[i],
+        total: temp?.[0]?.sum || 0,
+      });
+    }
+    const currentMonthStats = {
+      expenses: currentMonthExpenses?.[0]?.sum,
+      needs: currentMonthNeeds?.[0]?.sum,
+      wants: currentMonthWants?.[0]?.sum,
+      currentMonthsCategories: currentMonthsCategories,
+    };
+
     let response = {
       responseType: true,
       error: false,
@@ -280,13 +391,12 @@ router.post("/", authenticateToken, async (req, res) => {
         },
         {
           title: "Savings",
-          total:
-            
-                  parseFloat(totalIncome -
-                  totalInvestment?.[0]?.sum-
-                  totalExpense).toFixed(2)
+          total: parseFloat(
+            totalIncome - totalInvestment?.[0]?.sum - totalExpense
+          ).toFixed(2),
         },
       ],
+      currentMonthStats: currentMonthStats,
     };
 
     res.send(response);
