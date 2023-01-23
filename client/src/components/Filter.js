@@ -43,25 +43,7 @@ export default function Filter({
           ]}>
           <Text style={styles.filterButtonTitle}>{getCurrentMonth()}</Text>
         </TouchableOpacity>
-        <TouchableOpacity
-          onPress={() => onPress('custom')}
-          style={[
-            styles.filterButtonContainer,
-            {
-              backgroundColor:
-                selectedFilter == 'custom'
-                  ? colors.primaryAppColor
-                  : colors.secondaryBackgroundColor,
-            },
-          ]}>
-          <Text style={styles.filterButtonTitle}>{'Custom'}</Text>
-        </TouchableOpacity>
       </View>
-      {selectedFilter == 'custom' && (
-        <Text style={styles.dateLabel}>
-          {startDate} To {endDate}
-        </Text>
-      )}
     </View>
   );
 }
