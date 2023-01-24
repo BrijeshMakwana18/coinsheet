@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
   },
   filterButtonContainer: {
     height: perfectSize(40),
-    width: '30%',
+    width: '45%',
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: perfectSize(5),
