@@ -34,7 +34,7 @@ import {
 import {encrypt, decryptV1} from '../../configs';
 const CircularChart = ({totalIncome, item, index}) => {
   let percent = (item.total * 100) / totalIncome;
-  console.log(percent,item,totalIncome)
+  console.log(percent, item, totalIncome);
   return (
     <View
       style={[
@@ -105,9 +105,9 @@ class Home extends Component {
     const data = {
       id: this.props.LoginReducer.user.id,
     };
-    this.props.fetchInvestments({
-      params: data,
-    });
+    // this.props.fetchInvestments({
+    //   params: data,
+    // });
     this.props.fetchTransactions({
       params: data,
     });
@@ -370,187 +370,372 @@ class Home extends Component {
             dashboardData?.totalExpense === 0 ? (
               <NoDataFound selectedFilter={selectedFilter} />
             ) : (
-              <ScrollView
-                scrollEventThrottle={16}
-                showsVerticalScrollIndicator={false}
-                style={styles.scrollContainer}>
-                <TouchableOpacity
-                  onPress={() => console.log(this.props.AppReducer)}
-                  style={styles.dashboardContainer}>
-                  <Text style={styles.myBalanceTitle}>{myBalanceTitle}</Text>
-                  <Text style={styles.myBalanceStyle}>
-                    {(
-                      dashboardData.totalIncome -
-                      dashboardData.totalExpense -
-                      dashboardData.totalInvestment
-                    ).toFixed(2)}
-                  </Text>
-                  <View style={styles.dashboardInnerContainer}>
-                    <View style={styles.investmentContainer}>
-                      <View>
-                        <Text style={styles.dashboardInvestmentHeaderStyle}>
-                          {dashboardInvestmentTitle}
-                        </Text>
-                        <Text style={styles.dashboardInvestmentStyle}>
-                          {dashboardData.totalInvestment}
-                        </Text>
-                      </View>
-                    </View>
-                    <View style={styles.expenseContainer}>
-                      <View>
-                        <Text style={styles.dashboardExpenseHeaderStyle}>
-                          {dashboardExpenseTitle}
-                        </Text>
-                        <Text style={styles.dashboardExpenseStyle}>
-                          {dashboardData.totalExpense}
-                        </Text>
-                      </View>
-                    </View>
-                    <View style={styles.expenseContainer}>
-                      <View>
-                        <Text style={styles.dashboardExpenseHeaderStyle}>
-                          {dashboardCashbackTitle}
-                        </Text>
-                        <Text style={styles.dashboardExpenseStyle}>
-                          {dashboardData.totalCashbacks}
-                        </Text>
-                      </View>
-                    </View>
-                  </View>
-                  <Image
-                    source={images.dashboardImage}
-                    style={styles.dashboardImage}
-                  />
-                </TouchableOpacity>
-                {dashboardData.transactionCategories.length > 0 ? (
-                  <View style={styles.topCatContainer}>
-                    <View style={styles.catHeaderContainer}>
-                      <Text style={styles.topCatHeader}>{topCatHeader}</Text>
-                      <TouchableOpacity
-                        onPress={() => {
-                          this.props.navigation.navigate('AllExpenseCat', {
-                            selectedFilter: selectedFilter,
-                            dateRange:
-                              selectedFilter == 'all'
-                                ? false
-                                : {
-                                    start: selectedStartDateTimeStamp,
-                                    end: selectedEndDateTimeStamp,
-                                  },
-                          });
-                        }}
-                        style={styles.seeAllContainer}>
-                        <Text style={styles.seeAllTitle}>{'See all'}</Text>
-                      </TouchableOpacity>
-                    </View>
-                    <View
-                      style={{
-                        flexDirection: 'row',
-                        justifyContent: 'space-between',
-                        marginTop: '3.33%',
-                      }}>
-                      {this.renderTopCategories(
-                        dashboardData.transactionCategories[0],
-                      )}
-                      {this.renderTopCategories(
-                        dashboardData.transactionCategories[1],
-                      )}
-                    </View>
-                    <View
-                      style={{
-                        flexDirection: 'row',
-                        marginTop: '3.33%',
-                        justifyContent: 'space-between',
-                      }}>
-                      {this.renderTopCategories(
-                        dashboardData.transactionCategories[2],
-                      )}
-                      {this.renderTopCategories(
-                        dashboardData.transactionCategories[3],
-                      )}
-                    </View>
-                  </View>
-                ) : null}
-                {dashboardData.stat && (
-                  <View
-                    style={{
-                      marginTop: '5%',
-                    }}>
-                    <Text style={styles.summaryTitle}>{summary}</Text>
-                    <View
-                      style={{
-                        flexDirection: 'row',
-                        justifyContent: 'space-between',
-                        marginTop: '3.33%',
-                      }}>
-                      <CircularChart
-                        totalIncome={dashboardData.totalIncome}
-                        item={dashboardData.stat[0]}
-                        index={0}
-                      />
-                      <CircularChart
-                        totalIncome={dashboardData.totalIncome}
-                        item={dashboardData.stat[1]}
-                        index={1}
-                      />
-                    </View>
-                    <View
-                      style={{
-                        flexDirection: 'row',
-                        justifyContent: 'space-between',
-                        marginTop: '3.33%',
-                      }}>
-                      <CircularChart
-                        totalIncome={dashboardData.totalIncome}
-                        item={dashboardData.stat[2]}
-                        index={2}
-                      />
-                      <CircularChart
-                        totalIncome={dashboardData.totalIncome}
-                        item={dashboardData.stat[3]}
-                        index={3}
-                      />
-                    </View>
-                  </View>
-                )}
-                {dashboardData.recentTransactions.length > 0 ? (
-                  <View style={styles.recentTransactionsListContainer}>
-                    <View style={styles.catHeaderContainer}>
-                      <Text style={styles.recentTransactionsHeader}>
-                        {recentTransactionsHeader}
+              <>
+                {selectedFilter === 'month' ? (
+                  <ScrollView
+                    scrollEventThrottle={16}
+                    showsVerticalScrollIndicator={false}
+                    style={styles.scrollContainer}>
+                    <TouchableOpacity
+                      onPress={() => console.log(this.props.AppReducer)}
+                      style={styles.dashboardContainer}>
+                      <Text style={styles.myBalanceTitle}>
+                        {myBalanceTitle}
                       </Text>
-                      <TouchableOpacity
-                        onPress={() => {
-                          this.props.navigation.navigate('TransactionList', {
-                            selectedFilter: selectedFilter,
-                            dateRange:
-                              selectedFilter == 'all'
-                                ? false
-                                : {
-                                    start: selectedStartDateTimeStamp,
-                                    end: selectedEndDateTimeStamp,
-                                  },
-                          });
-                        }}
-                        style={styles.seeAllContainer}>
-                        <Text style={styles.seeAllTitle}>{'See all'}</Text>
-                      </TouchableOpacity>
-                    </View>
-                    {this.renderRecentTransactions(
-                      dashboardData.recentTransactions[0],
+                      <Text style={styles.myBalanceStyle}>
+                        {(
+                          dashboardData.totalIncome -
+                          dashboardData.totalExpense -
+                          dashboardData.totalInvestment
+                        ).toFixed(2)}
+                      </Text>
+                      <View style={styles.dashboardInnerContainer}>
+                        <View style={styles.expenseContainer}>
+                          <View>
+                            <Text style={styles.dashboardExpenseHeaderStyle}>
+                              {dashboardExpenseTitle}
+                            </Text>
+                            <Text style={styles.dashboardExpenseStyle}>
+                              {dashboardData.currentMonthStats.expenses}
+                            </Text>
+                          </View>
+                        </View>
+                      </View>
+                      <Image
+                        source={images.dashboardImage}
+                        style={styles.dashboardImage}
+                      />
+                    </TouchableOpacity>
+                    {dashboardData.currentMonthStats.currentMonthsCategories
+                      .length > 0 ? (
+                      <View style={styles.topCatContainer}>
+                        <View style={styles.catHeaderContainer}>
+                          <Text style={styles.topCatHeader}>
+                            {topCatHeader}
+                          </Text>
+                          <TouchableOpacity
+                            // onPress={() => {
+                            //   this.props.navigation.navigate('AllExpenseCat', {
+                            //     selectedFilter: selectedFilter,
+                            //     dateRange:
+                            //       selectedFilter == 'all'
+                            //         ? false
+                            //         : {
+                            //             start: selectedStartDateTimeStamp,
+                            //             end: selectedEndDateTimeStamp,
+                            //           },
+                            //   });
+                            // }}
+                            style={styles.seeAllContainer}>
+                            <Text style={styles.seeAllTitle}>{'See all'}</Text>
+                          </TouchableOpacity>
+                        </View>
+                        <View
+                          style={{
+                            flexDirection: 'row',
+                            justifyContent: 'space-between',
+                            marginTop: '3.33%',
+                          }}>
+                          {this.renderTopCategories(
+                            dashboardData.currentMonthStats
+                              .currentMonthsCategories[0],
+                          )}
+                          {this.renderTopCategories(
+                            dashboardData.currentMonthStats
+                              .currentMonthsCategories[1],
+                          )}
+                        </View>
+                        <View
+                          style={{
+                            flexDirection: 'row',
+                            marginTop: '3.33%',
+                            justifyContent: 'space-between',
+                          }}>
+                          {this.renderTopCategories(
+                            dashboardData.currentMonthStats
+                              .currentMonthsCategories[2],
+                          )}
+                          {this.renderTopCategories(
+                            dashboardData.currentMonthStats
+                              .currentMonthsCategories[3],
+                          )}
+                        </View>
+                      </View>
+                    ) : null}
+                    {dashboardData.stat && (
+                      <View
+                        style={{
+                          marginTop: '5%',
+                        }}>
+                        <Text style={styles.summaryTitle}>{summary}</Text>
+                        <View
+                          style={{
+                            flexDirection: 'row',
+                            justifyContent: 'space-between',
+                            marginTop: '3.33%',
+                          }}>
+                          <CircularChart
+                            totalIncome={dashboardData.totalIncome}
+                            item={dashboardData.stat[0]}
+                            index={0}
+                          />
+                          <CircularChart
+                            totalIncome={dashboardData.totalIncome}
+                            item={dashboardData.stat[1]}
+                            index={1}
+                          />
+                        </View>
+                        <View
+                          style={{
+                            flexDirection: 'row',
+                            justifyContent: 'space-between',
+                            marginTop: '3.33%',
+                          }}>
+                          <CircularChart
+                            totalIncome={dashboardData.totalIncome}
+                            item={dashboardData.stat[2]}
+                            index={2}
+                          />
+                          <CircularChart
+                            totalIncome={dashboardData.totalIncome}
+                            item={dashboardData.stat[3]}
+                            index={3}
+                          />
+                        </View>
+                      </View>
                     )}
-                    {this.renderRecentTransactions(
-                      dashboardData.recentTransactions[1],
+                    {dashboardData.recentTransactions.length > 0 ? (
+                      <View style={styles.recentTransactionsListContainer}>
+                        <View style={styles.catHeaderContainer}>
+                          <Text style={styles.recentTransactionsHeader}>
+                            {recentTransactionsHeader}
+                          </Text>
+                          <TouchableOpacity
+                            onPress={() => {
+                              this.props.navigation.navigate(
+                                'TransactionList',
+                                {
+                                  selectedFilter: selectedFilter,
+                                  dateRange:
+                                    selectedFilter == 'all'
+                                      ? false
+                                      : {
+                                          start: selectedStartDateTimeStamp,
+                                          end: selectedEndDateTimeStamp,
+                                        },
+                                },
+                              );
+                            }}
+                            style={styles.seeAllContainer}>
+                            <Text style={styles.seeAllTitle}>{'See all'}</Text>
+                          </TouchableOpacity>
+                        </View>
+                        {this.renderRecentTransactions(
+                          dashboardData.recentTransactions[0],
+                        )}
+                        {this.renderRecentTransactions(
+                          dashboardData.recentTransactions[1],
+                        )}
+                        {this.renderRecentTransactions(
+                          dashboardData.recentTransactions[2],
+                        )}
+                        {this.renderRecentTransactions(
+                          dashboardData.recentTransactions[3],
+                        )}
+                      </View>
+                    ) : null}
+                  </ScrollView>
+                ) : (
+                  <ScrollView
+                    scrollEventThrottle={16}
+                    showsVerticalScrollIndicator={false}
+                    style={styles.scrollContainer}>
+                    <TouchableOpacity
+                      onPress={() => console.log(this.props.AppReducer)}
+                      style={styles.dashboardContainer}>
+                      <Text style={styles.myBalanceTitle}>
+                        {myBalanceTitle}
+                      </Text>
+                      <Text style={styles.myBalanceStyle}>
+                        {(
+                          dashboardData.totalIncome -
+                          dashboardData.totalExpense -
+                          dashboardData.totalInvestment
+                        ).toFixed(2)}
+                      </Text>
+                      <View style={styles.dashboardInnerContainer}>
+                        <View style={styles.investmentContainer}>
+                          <View>
+                            <Text style={styles.dashboardInvestmentHeaderStyle}>
+                              {dashboardInvestmentTitle}
+                            </Text>
+                            <Text style={styles.dashboardInvestmentStyle}>
+                              {dashboardData.totalInvestment}
+                            </Text>
+                          </View>
+                        </View>
+                        <View style={styles.expenseContainer}>
+                          <View>
+                            <Text style={styles.dashboardExpenseHeaderStyle}>
+                              {dashboardExpenseTitle}
+                            </Text>
+                            <Text style={styles.dashboardExpenseStyle}>
+                              {dashboardData.totalExpense}
+                            </Text>
+                          </View>
+                        </View>
+                        <View style={styles.expenseContainer}>
+                          <View>
+                            <Text style={styles.dashboardExpenseHeaderStyle}>
+                              {dashboardCashbackTitle}
+                            </Text>
+                            <Text style={styles.dashboardExpenseStyle}>
+                              {dashboardData.totalCashbacks}
+                            </Text>
+                          </View>
+                        </View>
+                      </View>
+                      <Image
+                        source={images.dashboardImage}
+                        style={styles.dashboardImage}
+                      />
+                    </TouchableOpacity>
+                    {dashboardData.transactionCategories.length > 0 ? (
+                      <View style={styles.topCatContainer}>
+                        <View style={styles.catHeaderContainer}>
+                          <Text style={styles.topCatHeader}>
+                            {topCatHeader}
+                          </Text>
+                          <TouchableOpacity
+                            onPress={() => {
+                              this.props.navigation.navigate('AllExpenseCat', {
+                                selectedFilter: selectedFilter,
+                                dateRange:
+                                  selectedFilter == 'all'
+                                    ? false
+                                    : {
+                                        start: selectedStartDateTimeStamp,
+                                        end: selectedEndDateTimeStamp,
+                                      },
+                              });
+                            }}
+                            style={styles.seeAllContainer}>
+                            <Text style={styles.seeAllTitle}>{'See all'}</Text>
+                          </TouchableOpacity>
+                        </View>
+                        <View
+                          style={{
+                            flexDirection: 'row',
+                            justifyContent: 'space-between',
+                            marginTop: '3.33%',
+                          }}>
+                          {this.renderTopCategories(
+                            dashboardData.transactionCategories[0],
+                          )}
+                          {this.renderTopCategories(
+                            dashboardData.transactionCategories[1],
+                          )}
+                        </View>
+                        <View
+                          style={{
+                            flexDirection: 'row',
+                            marginTop: '3.33%',
+                            justifyContent: 'space-between',
+                          }}>
+                          {this.renderTopCategories(
+                            dashboardData.transactionCategories[2],
+                          )}
+                          {this.renderTopCategories(
+                            dashboardData.transactionCategories[3],
+                          )}
+                        </View>
+                      </View>
+                    ) : null}
+                    {dashboardData.stat && (
+                      <View
+                        style={{
+                          marginTop: '5%',
+                        }}>
+                        <Text style={styles.summaryTitle}>{summary}</Text>
+                        <View
+                          style={{
+                            flexDirection: 'row',
+                            justifyContent: 'space-between',
+                            marginTop: '3.33%',
+                          }}>
+                          <CircularChart
+                            totalIncome={dashboardData.totalIncome}
+                            item={dashboardData.stat[0]}
+                            index={0}
+                          />
+                          <CircularChart
+                            totalIncome={dashboardData.totalIncome}
+                            item={dashboardData.stat[1]}
+                            index={1}
+                          />
+                        </View>
+                        <View
+                          style={{
+                            flexDirection: 'row',
+                            justifyContent: 'space-between',
+                            marginTop: '3.33%',
+                          }}>
+                          <CircularChart
+                            totalIncome={dashboardData.totalIncome}
+                            item={dashboardData.stat[2]}
+                            index={2}
+                          />
+                          <CircularChart
+                            totalIncome={dashboardData.totalIncome}
+                            item={dashboardData.stat[3]}
+                            index={3}
+                          />
+                        </View>
+                      </View>
                     )}
-                    {this.renderRecentTransactions(
-                      dashboardData.recentTransactions[2],
-                    )}
-                    {this.renderRecentTransactions(
-                      dashboardData.recentTransactions[3],
-                    )}
-                  </View>
-                ) : null}
-              </ScrollView>
+                    {dashboardData.recentTransactions.length > 0 ? (
+                      <View style={styles.recentTransactionsListContainer}>
+                        <View style={styles.catHeaderContainer}>
+                          <Text style={styles.recentTransactionsHeader}>
+                            {recentTransactionsHeader}
+                          </Text>
+                          <TouchableOpacity
+                            onPress={() => {
+                              this.props.navigation.navigate(
+                                'TransactionList',
+                                {
+                                  selectedFilter: selectedFilter,
+                                  dateRange:
+                                    selectedFilter == 'all'
+                                      ? false
+                                      : {
+                                          start: selectedStartDateTimeStamp,
+                                          end: selectedEndDateTimeStamp,
+                                        },
+                                },
+                              );
+                            }}
+                            style={styles.seeAllContainer}>
+                            <Text style={styles.seeAllTitle}>{'See all'}</Text>
+                          </TouchableOpacity>
+                        </View>
+                        {this.renderRecentTransactions(
+                          dashboardData.recentTransactions[0],
+                        )}
+                        {this.renderRecentTransactions(
+                          dashboardData.recentTransactions[1],
+                        )}
+                        {this.renderRecentTransactions(
+                          dashboardData.recentTransactions[2],
+                        )}
+                        {this.renderRecentTransactions(
+                          dashboardData.recentTransactions[3],
+                        )}
+                      </View>
+                    ) : null}
+                  </ScrollView>
+                )}
+              </>
             )}
             <ErrorSlider error={this.state.error} top={this.errorModalTop} />
           </View>
