@@ -322,6 +322,80 @@ class Home extends Component {
   handleDashboardSort() {
     const {selectedStartDateTimeStamp, selectedEndDateTimeStamp} = this.state;
   }
+
+  renderCurrentMonth = () => {
+    const {
+      isLoading,
+      selectedFilter,
+      selectedStartDateTimeStamp,
+      selectedEndDateTimeStamp,
+    } = this.state;
+    const {user} = this.props.LoginReducer;
+    const {
+      title,
+      myBalanceTitle,
+      dashboardIncomeTitle,
+      dashboardExpenseTitle,
+      dashboardCashbackTitle,
+      topCatHeader,
+      recentTransactionsHeader,
+      dashboardInvestmentTitle,
+      summary,
+    } = strings.homeScreen;
+    const {dashboardData} = this.props.AppReducer;
+    return (
+      <>
+        <View style={styles.topCatContainer}>
+          <View style={styles.catHeaderContainer}>
+            <Text style={styles.topCatHeader}>{topCatHeader}</Text>
+            <TouchableOpacity
+              // onPress={() => {
+              //   this.props.navigation.navigate('AllExpenseCat', {
+              //     selectedFilter: selectedFilter,
+              //     dateRange:
+              //       selectedFilter == 'all'
+              //         ? false
+              //         : {
+              //             start: selectedStartDateTimeStamp,
+              //             end: selectedEndDateTimeStamp,
+              //           },
+              //   });
+              // }}
+              style={styles.seeAllContainer}>
+              <Text style={styles.seeAllTitle}>{'See all'}</Text>
+            </TouchableOpacity>
+          </View>
+          <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              marginTop: '3.33%',
+            }}>
+            {this.renderTopCategories(
+              dashboardData.currentMonthStats.currentMonthsCategories[0],
+            )}
+            {this.renderTopCategories(
+              dashboardData.currentMonthStats.currentMonthsCategories[1],
+            )}
+          </View>
+          <View
+            style={{
+              flexDirection: 'row',
+              marginTop: '3.33%',
+              justifyContent: 'space-between',
+            }}>
+            {this.renderTopCategories(
+              dashboardData.currentMonthStats.currentMonthsCategories[2],
+            )}
+            {this.renderTopCategories(
+              dashboardData.currentMonthStats.currentMonthsCategories[3],
+            )}
+          </View>
+        </View>
+      </>
+    );
+  };
+
   render() {
     const {
       isLoading,
@@ -407,61 +481,9 @@ class Home extends Component {
                       />
                     </TouchableOpacity>
                     {dashboardData.currentMonthStats.currentMonthsCategories
-                      .length > 0 ? (
-                      <View style={styles.topCatContainer}>
-                        <View style={styles.catHeaderContainer}>
-                          <Text style={styles.topCatHeader}>
-                            {topCatHeader}
-                          </Text>
-                          <TouchableOpacity
-                            // onPress={() => {
-                            //   this.props.navigation.navigate('AllExpenseCat', {
-                            //     selectedFilter: selectedFilter,
-                            //     dateRange:
-                            //       selectedFilter == 'all'
-                            //         ? false
-                            //         : {
-                            //             start: selectedStartDateTimeStamp,
-                            //             end: selectedEndDateTimeStamp,
-                            //           },
-                            //   });
-                            // }}
-                            style={styles.seeAllContainer}>
-                            <Text style={styles.seeAllTitle}>{'See all'}</Text>
-                          </TouchableOpacity>
-                        </View>
-                        <View
-                          style={{
-                            flexDirection: 'row',
-                            justifyContent: 'space-between',
-                            marginTop: '3.33%',
-                          }}>
-                          {this.renderTopCategories(
-                            dashboardData.currentMonthStats
-                              .currentMonthsCategories[0],
-                          )}
-                          {this.renderTopCategories(
-                            dashboardData.currentMonthStats
-                              .currentMonthsCategories[1],
-                          )}
-                        </View>
-                        <View
-                          style={{
-                            flexDirection: 'row',
-                            marginTop: '3.33%',
-                            justifyContent: 'space-between',
-                          }}>
-                          {this.renderTopCategories(
-                            dashboardData.currentMonthStats
-                              .currentMonthsCategories[2],
-                          )}
-                          {this.renderTopCategories(
-                            dashboardData.currentMonthStats
-                              .currentMonthsCategories[3],
-                          )}
-                        </View>
-                      </View>
-                    ) : null}
+                      .length > 0
+                      ? this.renderCurrentMonth()
+                      : null}
                     {dashboardData.stat && (
                       <View
                         style={{
