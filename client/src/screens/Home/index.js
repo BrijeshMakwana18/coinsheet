@@ -324,44 +324,14 @@ class Home extends Component {
   }
 
   renderCurrentMonth = () => {
-    const {
-      isLoading,
-      selectedFilter,
-      selectedStartDateTimeStamp,
-      selectedEndDateTimeStamp,
-    } = this.state;
-    const {user} = this.props.LoginReducer;
-    const {
-      title,
-      myBalanceTitle,
-      dashboardIncomeTitle,
-      dashboardExpenseTitle,
-      dashboardCashbackTitle,
-      topCatHeader,
-      recentTransactionsHeader,
-      dashboardInvestmentTitle,
-      summary,
-    } = strings.homeScreen;
+    const {topCatHeader} = strings.homeScreen;
     const {dashboardData} = this.props.AppReducer;
     return (
       <>
         <View style={styles.topCatContainer}>
           <View style={styles.catHeaderContainer}>
             <Text style={styles.topCatHeader}>{topCatHeader}</Text>
-            <TouchableOpacity
-              // onPress={() => {
-              //   this.props.navigation.navigate('AllExpenseCat', {
-              //     selectedFilter: selectedFilter,
-              //     dateRange:
-              //       selectedFilter == 'all'
-              //         ? false
-              //         : {
-              //             start: selectedStartDateTimeStamp,
-              //             end: selectedEndDateTimeStamp,
-              //           },
-              //   });
-              // }}
-              style={styles.seeAllContainer}>
+            <TouchableOpacity style={styles.seeAllContainer}>
               <Text style={styles.seeAllTitle}>{'See all'}</Text>
             </TouchableOpacity>
           </View>
@@ -393,6 +363,36 @@ class Home extends Component {
           </View>
         </View>
       </>
+    );
+  };
+
+  renderOverview = () => {
+    const {dashboardData} = this.props.AppReducer;
+    const {myBalanceTitle, dashboardExpenseTitle} = strings.homeScreen;
+    return (
+      <TouchableOpacity style={styles.dashboardContainer}>
+        <Text style={styles.myBalanceTitle}>{myBalanceTitle}</Text>
+        <Text style={styles.myBalanceStyle}>
+          {(
+            dashboardData.totalIncome -
+            dashboardData.totalExpense -
+            dashboardData.totalInvestment
+          ).toFixed(2)}
+        </Text>
+        <View style={styles.dashboardInnerContainer}>
+          <View style={styles.expenseContainer}>
+            <View>
+              <Text style={styles.dashboardExpenseHeaderStyle}>
+                {dashboardExpenseTitle}
+              </Text>
+              <Text style={styles.dashboardExpenseStyle}>
+                {dashboardData.currentMonthStats.expenses}
+              </Text>
+            </View>
+          </View>
+        </View>
+        <Image source={images.dashboardImage} style={styles.dashboardImage} />
+      </TouchableOpacity>
     );
   };
 
@@ -450,36 +450,6 @@ class Home extends Component {
                     scrollEventThrottle={16}
                     showsVerticalScrollIndicator={false}
                     style={styles.scrollContainer}>
-                    <TouchableOpacity
-                      onPress={() => console.log(this.props.AppReducer)}
-                      style={styles.dashboardContainer}>
-                      <Text style={styles.myBalanceTitle}>
-                        {myBalanceTitle}
-                      </Text>
-                      <Text style={styles.myBalanceStyle}>
-                        {(
-                          dashboardData.totalIncome -
-                          dashboardData.totalExpense -
-                          dashboardData.totalInvestment
-                        ).toFixed(2)}
-                      </Text>
-                      <View style={styles.dashboardInnerContainer}>
-                        <View style={styles.expenseContainer}>
-                          <View>
-                            <Text style={styles.dashboardExpenseHeaderStyle}>
-                              {dashboardExpenseTitle}
-                            </Text>
-                            <Text style={styles.dashboardExpenseStyle}>
-                              {dashboardData.currentMonthStats.expenses}
-                            </Text>
-                          </View>
-                        </View>
-                      </View>
-                      <Image
-                        source={images.dashboardImage}
-                        style={styles.dashboardImage}
-                      />
-                    </TouchableOpacity>
                     {dashboardData.currentMonthStats.currentMonthsCategories
                       .length > 0
                       ? this.renderCurrentMonth()
