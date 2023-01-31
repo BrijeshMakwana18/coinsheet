@@ -467,11 +467,7 @@ class Home extends Component {
                         {myBalanceTitle}
                       </Text>
                       <Text style={styles.myBalanceStyle}>
-                        {(
-                          dashboardData.totalIncome -
-                          dashboardData.totalExpense -
-                          dashboardData.totalInvestment
-                        ).toFixed(2)}
+                        {dashboardData.balance.toFixed(2)}
                       </Text>
                       <View style={styles.dashboardInnerContainer}>
                         <View style={styles.investmentContainer}>
