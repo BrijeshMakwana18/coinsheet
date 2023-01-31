@@ -119,8 +119,7 @@ class InvestmentProfitLoss extends Component {
       return selectedExpenseType.trim() == '' ||
         selectedExpenseType.trim() == '' ||
         amount.trim() == '' ||
-        notes.trim() == '' ||
-        Object.keys(selectedCat).length == 0
+        notes.trim() == ''
         ? false
         : true;
     }
