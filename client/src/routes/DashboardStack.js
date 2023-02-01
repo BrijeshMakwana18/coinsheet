@@ -9,6 +9,7 @@ import {
   TransactionList,
   AllExpenseCat,
   TransactionSuccess,
+  InvestmentProfitLoss,
 } from '../screens';
 const Stack = createStackNavigator();
 
@@ -29,6 +30,11 @@ export default function DashboardStack() {
       <Stack.Screen
         name="AddExpense"
         component={AddExpense}
+        options={{header: () => null}}
+      />
+      <Stack.Screen
+        name="InvestmentProfitLoss"
+        component={InvestmentProfitLoss}
         options={{header: () => null}}
       />
       <Stack.Screen
