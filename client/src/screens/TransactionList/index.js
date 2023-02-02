@@ -72,10 +72,14 @@ class TransactionList extends Component {
       return (
         <TouchableOpacity
           onPress={() => {
-            this.props.navigation.navigate('AddExpense', {
-              isEdit: true,
-              item: item,
-            });
+            const profitloss = item.expenseType === 'profitloss';
+            this.props.navigation.navigate(
+              !profitloss ? 'AddExpense' : 'InvestmentProfitLoss',
+              {
+                isEdit: true,
+                item: item,
+              },
+            );
           }}
           style={[
             styles.transactionContainer,
