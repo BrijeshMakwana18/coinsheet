@@ -37,6 +37,8 @@ const strings = {
     customEmptyDashboardTitle:
       'Oh! Looks like you do not have any transaction during selected time period.',
     summary: 'Spending habits',
+    needs: 'Needs',
+    wants: 'Wants',
   },
   tabBarLabels: {
     home: 'Dashboard',
@@ -114,6 +116,10 @@ const strings = {
     transactions: 'Transactions',
     allFilter: 'All',
     customFilter: 'Custom',
+  },
+  filters: {
+    all: 'All',
+    monthly: 'Monthly',
   },
 };
 
