@@ -1,6 +1,6 @@
 import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
 import React from 'react';
-import {perfectSize, colors, fonts} from '../theme';
+import {perfectSize, colors, fonts, strings} from '../theme';
 import {getCurrentMonth, getDisplayDate} from '../utils/globalMethods';
 export default function Filter({
   selectedFilter,
@@ -14,6 +14,7 @@ export default function Filter({
   const endDate = selectedEndDateTimeStamp
     ? getDisplayDate(selectedEndDateTimeStamp)
     : '';
+  const {all, monthly} = strings.filters;
   return (
     <View style={styles.filterContainer}>
       <View style={styles.filterInnerContainer}>
@@ -28,7 +29,7 @@ export default function Filter({
                   : colors.secondaryBackgroundColor,
             },
           ]}>
-          <Text style={styles.filterButtonTitle}>{'All'}</Text>
+          <Text style={styles.filterButtonTitle}>{all}</Text>
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => onPress('month')}
@@ -41,7 +42,7 @@ export default function Filter({
                   : colors.secondaryBackgroundColor,
             },
           ]}>
-          <Text style={styles.filterButtonTitle}>{getCurrentMonth()}</Text>
+          <Text style={styles.filterButtonTitle}>{monthly}</Text>
         </TouchableOpacity>
       </View>
     </View>
