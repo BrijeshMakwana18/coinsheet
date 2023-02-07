@@ -417,8 +417,7 @@ class Home extends Component {
                     scrollEventThrottle={16}
                     showsVerticalScrollIndicator={false}
                     style={styles.scrollContainer}>
-                    {dashboardData.currentMonthStats.currentMonthsCategories
-                      .length > 0
+                    {dashboardData?.monthlyStats?.length > 0
                       ? this.renderCurrentMonth()
                       : null}
                   </ScrollView>
