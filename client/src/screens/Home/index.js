@@ -322,15 +322,82 @@ class Home extends Component {
   handleDashboardSort() {
     const {selectedStartDateTimeStamp, selectedEndDateTimeStamp} = this.state;
   }
-
+  renderItem = (item, index) => {
+    const {myBalanceTitle, dashboardExpenseTitle, needs, wants} =
+      strings.homeScreen;
+    return (
+      <TouchableOpacity
+        onPress={() => console.log(this.props.AppReducer)}
+        style={styles.dashboardContainer}>
+        <Text style={styles.myBalanceTitle}>{myBalanceTitle}</Text>
+        <Text style={styles.myBalanceStyle}>{item.expenses}</Text>
+        <View style={styles.dashboardInnerContainer}>
+          <View style={styles.investmentContainer}>
+            <View>
+              <Text style={styles.dashboardInvestmentHeaderStyle}>{needs}</Text>
+              <Text style={styles.dashboardInvestmentStyle}>{item.needs}</Text>
+            </View>
+          </View>
+          <View style={styles.expenseContainer}>
+            <View>
+              <Text style={styles.dashboardExpenseHeaderStyle}>{wants}</Text>
+              <Text style={styles.dashboardExpenseStyle}>{item.wants}</Text>
+            </View>
+          </View>
+        </View>
+      </TouchableOpacity>
+    );
+  };
   renderCurrentMonth = () => {
     const {topCatHeader} = strings.homeScreen;
     const {dashboardData} = this.props.AppReducer;
-    return (
-      <>
-        <View style={styles.topCatContainer}></View>
-      </>
-    );
+    let monthlyStats = dashboardData.monthlyStats;
+    const {myBalanceTitle, dashboardExpenseTitle, needs, wants} =
+      strings.homeScreen;
+    if (Array.isArray(monthlyStats)) {
+      return (
+        <FlatList
+          data={monthlyStats}
+          showsVerticalScrollIndicator={false}
+          // contentContainerStyle={{
+          //   height: '100%',
+          //   width: '100%',
+          // }}
+          renderItem={({item, index}) => this.renderItem(item, index)}
+          keyExtractor={(item, index) => index.toString()}
+        />
+      );
+      // monthlyStats.map((item, index) => {
+      //   return (
+      //     <TouchableOpacity
+      //       onPress={() => console.log(this.props.AppReducer)}
+      //       style={styles.dashboardContainer}>
+      //       <Text style={styles.myBalanceTitle}>{myBalanceTitle}</Text>
+      //       <Text style={styles.myBalanceStyle}>{item.expenses}</Text>
+      //       <View style={styles.dashboardInnerContainer}>
+      //         <View style={styles.investmentContainer}>
+      //           <View>
+      //             <Text style={styles.dashboardInvestmentHeaderStyle}>
+      //               {needs}
+      //             </Text>
+      //             <Text style={styles.dashboardInvestmentStyle}>
+      //               {item.needs}
+      //             </Text>
+      //           </View>
+      //         </View>
+      //         <View style={styles.expenseContainer}>
+      //           <View>
+      //             <Text style={styles.dashboardExpenseHeaderStyle}>
+      //               {wants}
+      //             </Text>
+      //             <Text style={styles.dashboardExpenseStyle}>{item.wants}</Text>
+      //           </View>
+      //         </View>
+      //       </View>
+      //     </TouchableOpacity>
+      //   );
+      // });
+    }
   };
 
   renderOverview = () => {
