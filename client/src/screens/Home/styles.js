@@ -30,6 +30,7 @@ export default styles = StyleSheet.create({
     backgroundColor: colors.secondaryBackgroundColor,
     justifyContent: 'center',
     padding: perfectSize(20),
+    marginTop: '2%',
   },
   myBalanceTitle: {
     fontSize: perfectSize(16),

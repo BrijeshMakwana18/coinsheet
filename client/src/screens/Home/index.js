@@ -359,10 +359,6 @@ class Home extends Component {
         <FlatList
           data={monthlyStats}
           showsVerticalScrollIndicator={false}
-          // contentContainerStyle={{
-          //   height: '100%',
-          //   width: '100%',
-          // }}
           renderItem={({item, index}) => this.renderItem(item, index)}
           keyExtractor={(item, index) => index.toString()}
         />
