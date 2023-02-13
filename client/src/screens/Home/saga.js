@@ -100,6 +100,7 @@ function* fetchTransactions(action) {
         fuel: [],
         travel: [],
         loan: [],
+        other: [],
       };
       for (let i = 0; i < response.data.transactions.length; i++) {
         let temp = response.data.transactions[i];
@@ -138,6 +139,9 @@ function* fetchTransactions(action) {
             break;
           case 'loan':
             transactions.loan.push(temp);
+            break;
+          case 'other':
+            transactions.other.push(temp);
             break;
         }
       }
