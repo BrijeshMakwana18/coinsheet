@@ -39,6 +39,7 @@ const strings = {
     summary: 'Spending habits',
     needs: 'Needs',
     wants: 'Wants',
+    totalExpense: 'Total Expense',
   },
   tabBarLabels: {
     home: 'Dashboard',

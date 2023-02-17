@@ -323,12 +323,12 @@ class Home extends Component {
     const {selectedStartDateTimeStamp, selectedEndDateTimeStamp} = this.state;
   }
   renderItem = (item, index) => {
-    const {dashboardExpenseTitle, needs, wants} = strings.homeScreen;
+    const {needs, wants, totalExpense} = strings.homeScreen;
     return (
       <TouchableOpacity
         onPress={() => console.log(this.props.AppReducer)}
         style={styles.dashboardContainer}>
-        <Text style={styles.myBalanceTitle}>{dashboardExpenseTitle}</Text>
+        <Text style={styles.myBalanceTitle}>{totalExpense}</Text>
         <Text style={styles.myBalanceStyle}>{item.expenses}</Text>
         <View style={styles.dashboardInnerContainer}>
           <View style={styles.investmentContainer}>
