@@ -24,7 +24,3 @@ export function TRANSACTIONS_LIST() {
 export function FETCH_STAT() {
   return `${BaseURL}api/v1/stat`;
 }
-
-export function FETCH_INVESTMETNS() {
-  return `${BaseURL}api/v1/investments`;
-}

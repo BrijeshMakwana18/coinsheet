@@ -9,7 +9,6 @@ import {
 import {connect} from 'react-redux';
 import {StatSkeleton} from '../../components';
 import {colors, strings, perfectSize, fonts} from '../../theme';
-import {fetchInvestments} from '../Home/actions';
 import styles from './styles';
 import {FlatList} from 'react-native-gesture-handler';
 class Statistics extends Component {
@@ -27,8 +26,6 @@ const mapStateToProps = state => {
   return {LoginReducer: state.LoginReducer, AppReducer: state.AppReducer};
 };
 
-const mapDispatchToProps = {
-  fetchInvestments: fetchInvestments,
-};
+const mapDispatchToProps = {};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Statistics);

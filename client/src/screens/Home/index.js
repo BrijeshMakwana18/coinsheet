@@ -15,7 +15,7 @@ import {
 } from 'react-native';
 import {connect} from 'react-redux';
 import {logout} from '../Login/actions';
-import {fetchDashboard, fetchInvestments, fetchTransactions} from './actions';
+import {fetchDashboard, fetchTransactions} from './actions';
 import {
   DashboardSkeleton,
   ErrorSlider,
@@ -105,9 +105,6 @@ class Home extends Component {
     const data = {
       id: this.props.LoginReducer.user.id,
     };
-    // this.props.fetchInvestments({
-    //   params: data,
-    // });
     this.props.fetchTransactions({
       params: data,
     });
@@ -700,7 +697,6 @@ const mapStateToProps = state => {
 const mapDispatchToProps = {
   logout: logout,
   fetchDashboard: fetchDashboard,
-  fetchInvestments: fetchInvestments,
   fetchTransactions: fetchTransactions,
 };
 

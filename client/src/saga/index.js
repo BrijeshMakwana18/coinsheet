@@ -5,7 +5,6 @@ import {addExpenseWatcher} from '../screens/AddTransaction/AddExpense/saga';
 import {addIncomeWatcher} from '../screens/AddTransaction/AddIncome/saga';
 import {
   fetchDashboardWatcher,
-  fetchInvestmentsWatcher,
   fetchTransactionsWatcher,
 } from '../screens/Home/saga';
 // Redux Saga: Root Saga
@@ -16,7 +15,6 @@ export function* rootSaga() {
     addExpenseWatcher(),
     addIncomeWatcher(),
     fetchDashboardWatcher(),
-    fetchInvestmentsWatcher(),
     fetchTransactionsWatcher(),
   ]);
 }
