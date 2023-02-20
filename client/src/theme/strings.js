@@ -57,6 +57,7 @@ const strings = {
     freelance: 'Freelance',
     cashbackRewards: 'Cashback & Rewards',
     investmentProfit: 'Investment Profit',
+    dividend: 'Dividend',
     incomeType: 'Income Type',
   },
   addExpense: {

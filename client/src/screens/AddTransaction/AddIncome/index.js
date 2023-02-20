@@ -293,7 +293,7 @@ class AddIncome extends Component {
       salary,
       freelance,
       cashbackRewards,
-      investmentProfit,
+      dividend,
       incomeType,
     } = strings.addIncome;
     const {selectedIncomeType} = this.state;
@@ -399,21 +399,19 @@ class AddIncome extends Component {
                 <TouchableOpacity
                   onPress={() =>
                     this.setState({
-                      selectedIncomeType: 'investmentProfit',
+                      selectedIncomeType: 'dividend',
                     })
                   }
                   style={[
                     styles.incomeTypeButtonContainer,
                     {
                       backgroundColor:
-                        selectedIncomeType == 'investmentProfit'
+                        selectedIncomeType == 'dividend'
                           ? colors.primaryAppColor
                           : colors.secondaryBackgroundColor,
                     },
                   ]}>
-                  <Text style={styles.incomeTypeButtonTitle}>
-                    {investmentProfit}
-                  </Text>
+                  <Text style={styles.incomeTypeButtonTitle}>{dividend}</Text>
                 </TouchableOpacity>
               </View>
               <View style={styles.incomeTypeButtonsContainer}>
