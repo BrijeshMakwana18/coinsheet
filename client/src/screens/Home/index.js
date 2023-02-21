@@ -440,6 +440,7 @@ class Home extends Component {
       recentTransactionsHeader,
       dashboardInvestmentTitle,
       summary,
+      reliasedInvestmentTitle,
     } = strings.homeScreen;
     const {dashboardData} = this.props.AppReducer;
     return (
@@ -498,7 +499,7 @@ class Home extends Component {
                         <View style={styles.investmentContainer}>
                           <View>
                             <Text style={styles.dashboardInvestmentHeaderStyle}>
-                              {dashboardInvestmentTitle}
+                              {reliasedInvestmentTitle}
                             </Text>
                             <Text style={styles.dashboardInvestmentStyle}>
                               {dashboardData.totalInvestment}

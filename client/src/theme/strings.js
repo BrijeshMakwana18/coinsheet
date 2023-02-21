@@ -22,6 +22,7 @@ const strings = {
     dashboardExpenseTitle: 'Expense',
     dashboardCashbackTitle: 'Cashbacks',
     dashboardInvestmentTitle: 'Investments',
+    reliasedInvestmentTitle: 'Reliased Investment',
     topCatHeader: 'Top categories',
     seeAll: 'See all',
     recentTransactionsHeader: 'Recent transactions',
