@@ -353,7 +353,7 @@ class Home extends Component {
     if (Array.isArray(monthlyStats)) {
       return (
         <FlatList
-          data={monthlyStats}
+          data={monthlyStats.reverse()}
           showsVerticalScrollIndicator={false}
           renderItem={({item, index}) => this.renderItem(item, index)}
           keyExtractor={(item, index) => index.toString()}
