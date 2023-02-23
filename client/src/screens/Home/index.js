@@ -324,7 +324,15 @@ class Home extends Component {
     return (
       <TouchableOpacity
         onPress={() => console.log(this.props.AppReducer)}
-        style={styles.dashboardContainer}>
+        style={[
+          styles.dashboardContainer,
+          {
+            backgroundColor:
+              index === 0
+                ? colors.activeButtonBackgroundColor
+                : colors.secondaryBackgroundColor,
+          },
+        ]}>
         <Text style={styles.myBalanceTitle}>{totalExpense}</Text>
         <Text style={styles.myBalanceStyle}>{item.expenses}</Text>
         <View style={styles.dashboardInnerContainer}>
