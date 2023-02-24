@@ -32,6 +32,20 @@ import {
   getCurrentTimestamps,
 } from '../../utils/globalMethods';
 import {encrypt, decryptV1} from '../../configs';
+let months = [
+  'Jan',
+  'Feb',
+  'Mar',
+  'Apr',
+  'May',
+  'Jun',
+  'Jul',
+  'Aug',
+  'Sep',
+  'Oct',
+  'Nov',
+  'Dec',
+];
 const CircularChart = ({totalIncome, item, index}) => {
   let percent = (item.total * 100) / totalIncome;
   console.log(percent, item, totalIncome);
@@ -333,7 +347,12 @@ class Home extends Component {
                 : colors.secondaryBackgroundColor,
           },
         ]}>
-        <Text style={styles.myBalanceTitle}>{totalExpense}</Text>
+        <Text style={styles.myBalanceTitle}>
+          {totalExpense}
+          {` - ${months[
+            new Date().getMonth() - index
+          ].toUpperCase()} ${new Date().getFullYear()}`}
+        </Text>
         <Text style={styles.myBalanceStyle}>{item.expenses}</Text>
         <View style={styles.dashboardInnerContainer}>
           <View style={styles.investmentContainer}>
