@@ -610,7 +610,7 @@ class Home extends Component {
                         </View>
                       </View>
                     ) : null}
-                    {dashboardData.stat && (
+                    {/* {dashboardData.stat && (
                       <View
                         style={{
                           marginTop: '5%',
@@ -651,7 +651,7 @@ class Home extends Component {
                           />
                         </View>
                       </View>
-                    )}
+                    )} */}
                     {dashboardData.recentTransactions.length > 0 ? (
                       <View style={styles.recentTransactionsListContainer}>
                         <View style={styles.catHeaderContainer}>
