@@ -46,57 +46,6 @@ let months = [
   'Nov',
   'Dec',
 ];
-const CircularChart = ({totalIncome, item, index}) => {
-  let percent = (item.total * 100) / totalIncome;
-  console.log(percent, item, totalIncome);
-  return (
-    <View
-      style={[
-        styles.catContainer,
-        {
-          backgroundColor: colors.secondaryBackgroundColor,
-          marginTop: index <= 1 ? '5%' : 0,
-          marginBottom: '2%',
-          height: 'auto',
-        },
-      ]}>
-      <CircularProgress
-        percent={percent.toFixed(2)}
-        radius={perfectSize(50)}
-        bgRingWidth={perfectSize(12)}
-        progressRingWidth={perfectSize(10)}
-        ringColor={colors.primaryAppColor}
-        ringBgColor={colors.tabBarBackgroundColor}
-        textFontSize={perfectSize(18)}
-        textFontColor={colors.titleColor}
-        textFontWeight={'bold'}
-        clockwise={true}
-        bgColor={'white'}
-        startDegrees={0}
-        marginTop="10%"
-      />
-      <Text
-        style={{
-          fontSize: perfectSize(18),
-          //fontFamily: fonts.quicksandBold,
-          color: colors.titleColor,
-          marginTop: '10%',
-        }}>
-        {item.title}
-      </Text>
-      <Text
-        style={{
-          fontSize: perfectSize(18),
-          //fontFamily: fonts.quicksandBold,
-          color: colors.titleColor,
-          marginTop: '5%',
-          marginBottom: '10%',
-        }}>
-        {item.total}
-      </Text>
-    </View>
-  );
-};
 class Home extends Component {
   constructor(props) {
     super(props);
@@ -386,36 +335,6 @@ class Home extends Component {
           keyExtractor={(item, index) => index.toString()}
         />
       );
-      // monthlyStats.map((item, index) => {
-      //   return (
-      //     <TouchableOpacity
-      //       onPress={() => console.log(this.props.AppReducer)}
-      //       style={styles.dashboardContainer}>
-      //       <Text style={styles.myBalanceTitle}>{myBalanceTitle}</Text>
-      //       <Text style={styles.myBalanceStyle}>{item.expenses}</Text>
-      //       <View style={styles.dashboardInnerContainer}>
-      //         <View style={styles.investmentContainer}>
-      //           <View>
-      //             <Text style={styles.dashboardInvestmentHeaderStyle}>
-      //               {needs}
-      //             </Text>
-      //             <Text style={styles.dashboardInvestmentStyle}>
-      //               {item.needs}
-      //             </Text>
-      //           </View>
-      //         </View>
-      //         <View style={styles.expenseContainer}>
-      //           <View>
-      //             <Text style={styles.dashboardExpenseHeaderStyle}>
-      //               {wants}
-      //             </Text>
-      //             <Text style={styles.dashboardExpenseStyle}>{item.wants}</Text>
-      //           </View>
-      //         </View>
-      //       </View>
-      //     </TouchableOpacity>
-      //   );
-      // });
     }
   };
 
@@ -610,48 +529,6 @@ class Home extends Component {
                         </View>
                       </View>
                     ) : null}
-                    {/* {dashboardData.stat && (
-                      <View
-                        style={{
-                          marginTop: '5%',
-                        }}>
-                        <Text style={styles.summaryTitle}>{summary}</Text>
-                        <View
-                          style={{
-                            flexDirection: 'row',
-                            justifyContent: 'space-between',
-                            marginTop: '3.33%',
-                          }}>
-                          <CircularChart
-                            totalIncome={dashboardData.totalIncome}
-                            item={dashboardData.stat[0]}
-                            index={0}
-                          />
-                          <CircularChart
-                            totalIncome={dashboardData.totalIncome}
-                            item={dashboardData.stat[1]}
-                            index={1}
-                          />
-                        </View>
-                        <View
-                          style={{
-                            flexDirection: 'row',
-                            justifyContent: 'space-between',
-                            marginTop: '3.33%',
-                          }}>
-                          <CircularChart
-                            totalIncome={dashboardData.totalIncome}
-                            item={dashboardData.stat[2]}
-                            index={2}
-                          />
-                          <CircularChart
-                            totalIncome={dashboardData.totalIncome}
-                            item={dashboardData.stat[3]}
-                            index={3}
-                          />
-                        </View>
-                      </View>
-                    )} */}
                     {dashboardData.recentTransactions.length > 0 ? (
                       <View style={styles.recentTransactionsListContainer}>
                         <View style={styles.catHeaderContainer}>
