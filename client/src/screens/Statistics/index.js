@@ -10,13 +10,30 @@ import {connect} from 'react-redux';
 import {StatSkeleton} from '../../components';
 import {colors, strings, perfectSize, fonts} from '../../theme';
 import styles from './styles';
-import {FlatList} from 'react-native-gesture-handler';
+import Svg, {Circle} from 'react-native-svg';
+import Animated, {
+  interpolateColor,
+  useAnimatedProps,
+  useDerivedValue,
+  useSharedValue,
+  withTiming,
+} from 'react-native-reanimated';
 class Statistics extends Component {
   constructor(props) {
     super(props);
     this.state = {};
   }
+  // const strokeOffset = useSharedValue(radius * Math.PI * 2);
 
+  // const animatedCircleProps = useAnimatedProps(() => {
+  //   return {
+  //     strokeDashoffset: withTiming(strokeOffset.value, {duration: 2000}),
+  //   };
+  // });
+
+  // useEffect(() => {
+  //   strokeOffset.value = 0;
+  // }, []);
   render() {
     return <View style={styles.container}></View>;
   }
