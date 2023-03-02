@@ -24,11 +24,12 @@ router.post("/", authenticateToken, async (req, res) => {
 
   let date = new Date();
   for (let i = 0; i <= date.getMonth(); i++) {
-    let firstDay = new Date(date.getFullYear(), date.getMonth() + i - 1, 2);
+    let firstDay = new Date(date.getFullYear(), date.getMonth() + i - 2, 2);
+    console.log(i, date, firstDay, date.getFullYear(), date.getMonth());
     firstDay = new Date(
       firstDay.getTime() + firstDay.getTimezoneOffset() * 60000
     );
-    let lastDay = new Date(date.getFullYear(), date.getMonth() + i, 1);
+    let lastDay = new Date(date.getFullYear(), date.getMonth() + i - 1, 1);
     lastDay = new Date(lastDay.getTime() + lastDay.getTimezoneOffset() * 60000);
     monthlyIntervals.push({
       from: firstDay,
@@ -445,7 +446,7 @@ router.post("/", authenticateToken, async (req, res) => {
     }
 
     let response = {
-      responseType: true,
+      responseType: monthlyIntervals,
       error: false,
       balance: totalIncome - totalExpense - totalInvestment?.[0]?.sum,
       totalIncome: totalIncome,
