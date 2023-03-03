@@ -32,8 +32,8 @@ router.post("/", authenticateToken, async (req, res) => {
     let lastDay = new Date(date.getFullYear(), date.getMonth() + i - 1, 1);
     lastDay = new Date(lastDay.getTime() + lastDay.getTimezoneOffset() * 60000);
     monthlyIntervals.push({
-      from: firstDay,
-      to: lastDay,
+      from: new Date(firstDay.setUTCHours(0, 0, 0, 0)),
+      to: new Date(lastDay.setUTCHours(0, 0, 0, 0)),
     });
   }
   try {
