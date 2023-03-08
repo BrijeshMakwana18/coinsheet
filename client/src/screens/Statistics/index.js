@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   Text,
   View,
@@ -21,16 +21,12 @@ import Animated, {
   withTiming,
 } from 'react-native-reanimated';
 const Statistics = props => {
-  const {dashboardData} = props.AppReducer;
-  let monthlyStats = dashboardData.monthlyStats;
-  let totalIncome = dashboardData.totalIncome;
-
   useEffect(() => {
     // strokeOffset.value = 0;
   }, []);
 
   return (
-    <View style={styles.container} onClick={() => alert('aa', monthlyStats)}>
+    <View style={styles.container}>
       <></>
     </View>
   );
