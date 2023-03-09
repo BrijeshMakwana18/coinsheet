@@ -463,26 +463,27 @@ router.post("/", authenticateToken, async (req, res) => {
         (a, b) => b.total - a.total
       ),
       recentTransactions: recentTransactions,
-      stat: [
-        {
+      stat: {
+        needs: {
           title: "Needs",
           total: totalNeeds?.[0]?.sum || 0,
         },
-        {
+        wants: {
           title: "Wants",
           total: totalWants?.[0]?.sum || 0,
         },
-        {
+        investments: {
           title: "Investments",
           total: totalInvestment?.[0]?.sum || 0,
         },
-        {
+        savings: {
           title: "Savings",
           total: parseFloat(
             totalIncome - totalInvestment?.[0]?.sum - totalExpense
           ).toFixed(2),
         },
-      ],
+      },
+
       monthlyStats: monthlyStats,
     };
 
