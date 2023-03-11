@@ -29,9 +29,8 @@ const STROKE_COLOR = '#A6E1FA';
 
 const {width, height} = Dimensions.get('window');
 
-const CIRCLE_LENGTH = 500; // 2PI*R
+const CIRCLE_LENGTH = 450; // 2PI*R
 const R = CIRCLE_LENGTH / (2 * Math.PI);
-
 const AnimatedCircle = Animated.createAnimatedComponent(Circle);
 const Statistics = props => {
   const needs = useSharedValue(0);
@@ -69,37 +68,64 @@ const Statistics = props => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.itemsContainer}>
-        <Svg
-          width={width / 2}
-          style={{
-            backgroundColor: 'green',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            height: '100%',
-          }}>
-          <Text>{`Needs\n${(needsPercent * 100).toFixed(2)}%`}</Text>
-          <Circle
-            cx={width / 4}
-            cy={height / 4}
-            r={R}
-            stroke={BACKGROUND_STROKE_COLOR}
-            strokeWidth={25}
-          />
-          <AnimatedCircle
-            cx={width / 4}
-            cy={height / 4}
-            r={R}
-            stroke={STROKE_COLOR}
-            strokeWidth={15}
-            strokeDasharray={CIRCLE_LENGTH}
-            animatedProps={animatedProps}
-            strokeLinecap={'round'}
-          />
-        </Svg>
+      <View style={styles.itemContainer}>
+        <View style={styles.item}>
+          <Svg width={'100%'} style={styles.svgContainer}>
+            <Circle
+              cx={width / 4.2}
+              cy={height / 6}
+              r={R}
+              stroke={BACKGROUND_STROKE_COLOR}
+              strokeWidth={25}
+            />
+            <AnimatedCircle
+              cx={width / 4.2}
+              cy={height / 6}
+              r={R}
+              stroke={STROKE_COLOR}
+              strokeWidth={15}
+              strokeDasharray={CIRCLE_LENGTH}
+              animatedProps={animatedProps}
+              strokeLinecap={'round'}
+            />
+          </Svg>
+          <Text style={styles.percent}>{`${(needsPercent * 100).toFixed(
+            2,
+          )}%`}</Text>
+          <Text
+            style={
+              styles.itemTitle
+            }>{`Needs \n${dashboardData.stat.needs.total}`}</Text>
+        </View>
+        <View style={styles.item}></View>
       </View>
-      <View style={styles.itemsContainer}></View>
+      <View style={styles.itemContainer}>
+        <View style={styles.item}>
+          {/* <Svg width={'50%'} style={styles.svgContainer}>
+            <Circle
+              cx={width / 4}
+              cy={height / 8}
+              r={R}
+              stroke={BACKGROUND_STROKE_COLOR}
+              strokeWidth={25}
+            />
+            <AnimatedCircle
+              cx={width / 4}
+              cy={height / 4}
+              r={R}
+              stroke={STROKE_COLOR}
+              strokeWidth={15}
+              strokeDasharray={CIRCLE_LENGTH}
+              animatedProps={animatedProps}
+              strokeLinecap={'round'}
+            />
+          </Svg>
+          <Text style={styles.itemTitle}>{`Needs\n${(
+            needsPercent * 100
+          ).toFixed(2)}%`}</Text> */}
+        </View>
+        <View style={styles.item}></View>
+      </View>
     </SafeAreaView>
   );
 };
