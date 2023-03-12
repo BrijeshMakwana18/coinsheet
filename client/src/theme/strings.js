@@ -119,6 +119,10 @@ const strings = {
     transactions: 'Transactions',
     allFilter: 'All',
     customFilter: 'Custom',
+    needs: 'Needs',
+    wants: 'Wants',
+    investments: 'Investments',
+    savings: 'Savings',
   },
   filters: {
     all: 'All',
