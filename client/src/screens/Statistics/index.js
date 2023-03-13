@@ -43,13 +43,11 @@ const Statistics = props => {
   const wantsPercent = dashboardData.stat.wants.total / totalIncome;
   const investmentsPercent = dashboardData.stat.investments.total / totalIncome;
   const savingsPercent = dashboardData.stat.savings.total / totalIncome;
-  const animatedProps = useAnimatedProps(() => ({
-    strokeDashoffset: CIRCLE_LENGTH * (1 - needs.value),
-  }));
-
-  const progressText = useDerivedValue(() => {
-    return `${Math.floor(needs.value * 100)}`;
-  });
+  const animatedProps = type => {
+    return useAnimatedProps(() => ({
+      strokeDashoffset: CIRCLE_LENGTH * (1 - type?.value),
+    }));
+  };
 
   useEffect(() => {
     needs.value = withTiming(needsPercent, {
