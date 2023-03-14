@@ -83,7 +83,7 @@ const Statistics = props => {
               stroke={STROKE_COLOR}
               strokeWidth={15}
               strokeDasharray={CIRCLE_LENGTH}
-              animatedProps={animatedProps}
+              animatedProps={animatedProps(needs)}
               strokeLinecap={'round'}
             />
           </Svg>
@@ -93,36 +93,94 @@ const Statistics = props => {
           <Text
             style={
               styles.itemTitle
-            }>{`Needs \n${dashboardData.stat.needs.total}`}</Text>
+            }>{`${strings.statistics.needs} \n${dashboardData.stat.needs.total}`}</Text>
         </View>
-        <View style={styles.item}></View>
-      </View>
-      <View style={styles.itemContainer}>
         <View style={styles.item}>
-          {/* <Svg width={'50%'} style={styles.svgContainer}>
+          <Svg width={'100%'} style={styles.svgContainer}>
             <Circle
-              cx={width / 4}
-              cy={height / 8}
+              cx={width / 4.2}
+              cy={height / 6}
               r={R}
               stroke={BACKGROUND_STROKE_COLOR}
               strokeWidth={25}
             />
             <AnimatedCircle
-              cx={width / 4}
-              cy={height / 4}
+              cx={width / 4.2}
+              cy={height / 6}
               r={R}
               stroke={STROKE_COLOR}
               strokeWidth={15}
               strokeDasharray={CIRCLE_LENGTH}
-              animatedProps={animatedProps}
+              animatedProps={animatedProps(wants)}
               strokeLinecap={'round'}
             />
           </Svg>
-          <Text style={styles.itemTitle}>{`Needs\n${(
-            needsPercent * 100
-          ).toFixed(2)}%`}</Text> */}
+          <Text style={styles.percent}>{`${(wantsPercent * 100).toFixed(
+            2,
+          )}%`}</Text>
+          <Text
+            style={
+              styles.itemTitle
+            }>{`${strings.statistics.wants} \n${dashboardData.stat.wants.total}`}</Text>
         </View>
-        <View style={styles.item}></View>
+      </View>
+      <View style={styles.itemContainer}>
+        <View style={styles.item}>
+          <Svg width={'100%'} style={styles.svgContainer}>
+            <Circle
+              cx={width / 4.2}
+              cy={height / 6}
+              r={R}
+              stroke={BACKGROUND_STROKE_COLOR}
+              strokeWidth={25}
+            />
+            <AnimatedCircle
+              cx={width / 4.2}
+              cy={height / 6}
+              r={R}
+              stroke={STROKE_COLOR}
+              strokeWidth={15}
+              strokeDasharray={CIRCLE_LENGTH}
+              animatedProps={animatedProps(investments)}
+              strokeLinecap={'round'}
+            />
+          </Svg>
+          <Text style={styles.percent}>{`${(investmentsPercent * 100).toFixed(
+            2,
+          )}%`}</Text>
+          <Text
+            style={
+              styles.itemTitle
+            }>{`${strings.statistics.investments} \n${dashboardData.stat.investments.total}`}</Text>
+        </View>
+        <View style={styles.item}>
+          <Svg width={'100%'} style={styles.svgContainer}>
+            <Circle
+              cx={width / 4.2}
+              cy={height / 6}
+              r={R}
+              stroke={BACKGROUND_STROKE_COLOR}
+              strokeWidth={25}
+            />
+            <AnimatedCircle
+              cx={width / 4.2}
+              cy={height / 6}
+              r={R}
+              stroke={STROKE_COLOR}
+              strokeWidth={15}
+              strokeDasharray={CIRCLE_LENGTH}
+              animatedProps={animatedProps(savings)}
+              strokeLinecap={'round'}
+            />
+          </Svg>
+          <Text style={styles.percent}>{`${(savingsPercent * 100).toFixed(
+            2,
+          )}%`}</Text>
+          <Text
+            style={
+              styles.itemTitle
+            }>{`${strings.statistics.savings} \n${dashboardData.stat.savings.total}`}</Text>
+        </View>
       </View>
     </SafeAreaView>
   );
