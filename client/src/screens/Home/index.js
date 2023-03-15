@@ -321,15 +321,12 @@ class Home extends Component {
     );
   };
   renderCurrentMonth = () => {
-    const {topCatHeader} = strings.homeScreen;
     const {dashboardData} = this.props.AppReducer;
     let monthlyStats = dashboardData.monthlyStats;
-    const {myBalanceTitle, dashboardExpenseTitle, needs, wants} =
-      strings.homeScreen;
     if (Array.isArray(monthlyStats)) {
       return (
         <FlatList
-          data={monthlyStats.reverse()}
+          data={monthlyStats}
           showsVerticalScrollIndicator={false}
           renderItem={({item, index}) => this.renderItem(item, index)}
           keyExtractor={(item, index) => index.toString()}

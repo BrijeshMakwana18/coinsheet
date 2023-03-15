@@ -484,7 +484,7 @@ router.post("/", authenticateToken, async (req, res) => {
         },
       },
 
-      monthlyStats: monthlyStats,
+      monthlyStats: monthlyStats.reverse(),
     };
 
     res.send(response);
