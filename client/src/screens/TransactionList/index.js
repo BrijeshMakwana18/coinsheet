@@ -74,7 +74,11 @@ class TransactionList extends Component {
           onPress={() => {
             const profitloss = item.expenseType === 'profitloss';
             this.props.navigation.navigate(
-              !profitloss ? 'AddExpense' : 'InvestmentProfitLoss',
+              !profitloss
+                ? selectedFilter === 'debit'
+                  ? 'AddExpense'
+                  : 'AddIncome'
+                : 'InvestmentProfitLoss',
               {
                 isEdit: true,
                 item: item,

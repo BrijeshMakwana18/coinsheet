@@ -6,6 +6,7 @@ import {
 import {Home} from '../screens';
 import {
   AddExpense,
+  AddIncome,
   TransactionList,
   AllExpenseCat,
   TransactionSuccess,
@@ -30,6 +31,11 @@ export default function DashboardStack() {
       <Stack.Screen
         name="AddExpense"
         component={AddExpense}
+        options={{header: () => null}}
+      />
+      <Stack.Screen
+        name="AddIncome"
+        component={AddIncome}
         options={{header: () => null}}
       />
       <Stack.Screen

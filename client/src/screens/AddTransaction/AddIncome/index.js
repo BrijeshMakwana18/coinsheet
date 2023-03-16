@@ -14,6 +14,7 @@ import {
   Animated,
   StatusBar,
   TouchableOpacity,
+  DeviceEventEmitter,
 } from 'react-native';
 import {Button, ButtonWithImage, PrimaryHeader} from '../../../components';
 import {connect} from 'react-redux';
@@ -96,6 +97,7 @@ class AddIncome extends Component {
   datePickerMarginTop = new Animated.Value(perfectSize(950));
 
   componentDidMount() {
+    DeviceEventEmitter.emit('HideTabBar', true);
     this.keyboardDidShowListener = Keyboard.addListener(
       'keyboardDidShow',
       this.keyboardDidShow,
