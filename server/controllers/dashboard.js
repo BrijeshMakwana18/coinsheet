@@ -168,27 +168,6 @@ router.post("/", authenticateToken, async (req, res) => {
         },
       },
     ]);
-    let totalCashbacks = await Transaction.aggregate([
-      {
-        $match: {
-          $and: [
-            {
-              userId: id,
-            },
-            { type: "credit" },
-            { incomeType: "cashbackRewards" },
-          ],
-        },
-      },
-      {
-        $group: {
-          _id: null,
-          sum: {
-            $sum: "$amount",
-          },
-        },
-      },
-    ]);
     let transactionsOverview = [];
     let investmentOverview = {
       cat: "investment",
@@ -454,7 +433,6 @@ router.post("/", authenticateToken, async (req, res) => {
       totalInvestment: totalInvestment?.[0]?.sum - totalLoss?.[0]?.sum || false,
       actualTotalInvestment: totalInvestment?.[0]?.sum || false,
       netPL: (totalProfit?.[0]?.sum || 0) - totalLoss?.[0]?.sum || false,
-      totalCashbacks: totalCashbacks?.[0]?.sum || false,
       totalPF: totalPF?.[0]?.sum,
       investmentOverview: investmentOverview,
       totalUSInvestment: totalUSInvestment,

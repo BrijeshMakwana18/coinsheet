@@ -378,7 +378,6 @@ class Home extends Component {
       myBalanceTitle,
       dashboardIncomeTitle,
       dashboardExpenseTitle,
-      dashboardCashbackTitle,
       topCatHeader,
       recentTransactionsHeader,
       dashboardInvestmentTitle,
@@ -456,16 +455,6 @@ class Home extends Component {
                             </Text>
                             <Text style={styles.dashboardExpenseStyle}>
                               {dashboardData.totalExpense}
-                            </Text>
-                          </View>
-                        </View>
-                        <View style={styles.expenseContainer}>
-                          <View>
-                            <Text style={styles.dashboardExpenseHeaderStyle}>
-                              {dashboardCashbackTitle}
-                            </Text>
-                            <Text style={styles.dashboardExpenseStyle}>
-                              {dashboardData.totalCashbacks}
                             </Text>
                           </View>
                         </View>

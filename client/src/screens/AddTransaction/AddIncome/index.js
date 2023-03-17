@@ -294,7 +294,6 @@ class AddIncome extends Component {
       buttonTitle,
       salary,
       freelance,
-      cashbackRewards,
       dividend,
       incomeType,
     } = strings.addIncome;
@@ -433,25 +432,6 @@ class AddIncome extends Component {
                     },
                   ]}>
                   <Text style={styles.incomeTypeButtonTitle}>{freelance}</Text>
-                </TouchableOpacity>
-                <TouchableOpacity
-                  onPress={() =>
-                    this.setState({
-                      selectedIncomeType: 'cashbackRewards',
-                    })
-                  }
-                  style={[
-                    styles.incomeTypeButtonContainer,
-                    {
-                      backgroundColor:
-                        selectedIncomeType == 'cashbackRewards'
-                          ? colors.primaryAppColor
-                          : colors.secondaryBackgroundColor,
-                    },
-                  ]}>
-                  <Text style={styles.incomeTypeButtonTitle}>
-                    {cashbackRewards}
-                  </Text>
                 </TouchableOpacity>
               </View>
             </Animated.View>
