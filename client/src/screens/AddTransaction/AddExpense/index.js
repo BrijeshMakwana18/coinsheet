@@ -181,14 +181,6 @@ class AddExpense extends Component {
 
   componentDidMount() {
     DeviceEventEmitter.emit('HideTabBar', true);
-    // if (this.props.route.params?.isEdit) {
-    //   let index = item =>
-    //     item.title.toLowerCase() == this.props.route.params?.item.selectedCat;
-    //   console.log(data.findIndex(index));
-    // this.flatListRef.scrollToIndex({
-    //   index: 4,
-    // });
-    // }
     this.keyboardDidShowListener = Keyboard.addListener(
       'keyboardDidShow',
       this.keyboardDidShow,

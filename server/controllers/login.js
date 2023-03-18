@@ -61,19 +61,16 @@ router.post("/", async (req, res) => {
   //       });
   //     });
   // if (hashedpassword === user.password) {
-    res.header("auth-token", token).send({
-      responseType: true,
-      error: false,
-      user: {
-        username: user.username,
-        email: user.email,
-        id: user.id,
-        token: token,
-      },
-    });
-  // } else {
-  //   return res.send("Something went wrong");
-  // }
+  res.header("auth-token", token).send({
+    responseType: true,
+    error: false,
+    user: {
+      username: user.username,
+      email: user.email,
+      id: user.id,
+      token: token,
+    },
+  });
 });
 
 module.exports = router;
