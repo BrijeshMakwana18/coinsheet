@@ -102,22 +102,6 @@ const data = [
   },
 ];
 
-//Months for date picker
-let months = [
-  'January',
-  'February',
-  'March',
-  'April',
-  'May',
-  'June',
-  'July',
-  'August',
-  'September',
-  'October',
-  'November',
-  'December',
-];
-
 //Custom styles for date picker
 const customDayHeaderStylesCallback = () => {
   return {
@@ -155,15 +139,10 @@ class AddExpense extends Component {
     super(props);
     this.state = {
       amount: this.props.route?.params?.item?.amount.toString() || '',
-      // payee: '',
       notes: decryptV1(this.props.route?.params?.item?.notes),
       selectedCat:
         this.props.route?.params?.item?.transactionCat.toUpperCase() || '',
-      // displayDate:
-      //   this.props.route?.params?.item?.transactionDate || new Date(),
-      // modalDisplayDate: new Date(),
       datePicker: false,
-      // modalDate: this.props.route?.params?.item?.transactionDate || new Date(),
       selectedExpenseType: this.props.route?.params?.item?.expenseType || '',
       selectedDate:
         this.props.route?.params?.item?.transactionDate || new Date(),
@@ -435,10 +414,6 @@ class AddExpense extends Component {
         const dashboardParams = {
           id: this.props.LoginReducer.user.id,
           dashboardType: 'all',
-        };
-        const statisticsParams = {
-          id: this.props.LoginReducer.user.id,
-          statisticsType: 'all',
         };
         console.log('Expense added', response);
         this.props.fetchDashboard({
