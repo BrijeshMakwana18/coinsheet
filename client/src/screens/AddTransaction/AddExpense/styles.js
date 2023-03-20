@@ -16,7 +16,6 @@ export default styles = StyleSheet.create({
     backgroundColor: colors.textInputBackgroundColor,
     borderRadius: perfectSize(12),
     fontSize: perfectSize(23),
-    //fontFamily: fonts.quicksandBold,
     color: colors.titleColor,
     alignItems: 'center',
     justifyContent: 'center',
@@ -38,7 +37,6 @@ export default styles = StyleSheet.create({
   },
   headerTitle: {
     color: colors.titleColor,
-    //fontFamily: fonts.quicksandBold,
     fontSize: perfectSize(35),
   },
   headerImage: {
@@ -53,7 +51,6 @@ export default styles = StyleSheet.create({
     marginTop: '5%',
     color: colors.titleColor,
     opacity: 0.5,
-    //fontFamily: fonts.quicksandBold,
     textDecorationLine: 'underline',
     fontSize: perfectSize(18),
   },
@@ -62,12 +59,6 @@ export default styles = StyleSheet.create({
     height: perfectSize(80),
     alignSelf: 'center',
   },
-  // payeeInputContainer: {
-  //   width: '100%',
-  //   height: perfectSize(80),
-  //   marginTop: perfectSize(20),
-  //   alignSelf: 'center',
-  // },
   notesInputContainer: {
     width: '100%',
     marginTop: perfectSize(20),
@@ -77,7 +68,6 @@ export default styles = StyleSheet.create({
     textAlign: 'center',
     marginTop: '5%',
     color: 'rgba(255,255,255,0.5)',
-    //fontFamily: fonts.quicksandBold,
     fontSize: perfectSize(18),
   },
   catListContainer: {
@@ -107,12 +97,9 @@ export default styles = StyleSheet.create({
     height: '100%',
     width: '100%',
     resizeMode: 'contain',
-    // tintColor: colors.primaryLightColor,
   },
   catTitle: {
-    // marginTop: '20%',
     fontSize: perfectSize(16),
-    //fontFamily: fonts.quicksandBold,
   },
   //Date picker modal styles
   modal: {
@@ -146,7 +133,6 @@ export default styles = StyleSheet.create({
   datePickerHeaderLabel: {
     textAlign: 'center',
     color: colors.primaryAppColor,
-    //fontFamily: fonts.quicksandBold,
     fontSize: perfectSize(18),
   },
   //Calendar picker styles
@@ -162,7 +148,6 @@ export default styles = StyleSheet.create({
   },
   todayTextStyle: {},
   textStyle: {
-    //fontFamily: fonts.quicksandBold,
     color: colors.titleColor,
     fontSize: perfectSize(13),
   },
@@ -186,13 +171,11 @@ export default styles = StyleSheet.create({
   },
   yearTitleStyle: {
     color: colors.titleColor,
-    //fontFamily: fonts.quicksandBold,
     fontSize: perfectSize(16),
     opacity: 0.6,
   },
   monthTitleStyle: {
     color: colors.titleColor,
-    //fontFamily: fonts.quicksandBold,
     fontSize: perfectSize(18),
     textTransform: 'uppercase',
   },
@@ -223,13 +206,11 @@ export default styles = StyleSheet.create({
   expenseTypeLabel: {
     textAlign: 'center',
     color: 'rgba(255,255,255,0.5)',
-    //fontFamily: fonts.quicksandBold,
     fontSize: perfectSize(18),
   },
   expenseTypeButtonContainer: {
     height: '100%',
     width: '45%',
-    // backgroundColor: colors.primaryCardBackgroundColor,
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: perfectSize(10),
@@ -237,7 +218,6 @@ export default styles = StyleSheet.create({
   expenseTypeButtonTitle: {
     fontSize: perfectSize(15),
     color: colors.titleColor,
-    //fontFamily: fonts.avenirHeavy,
     fontWeight: 'bold',
   },
 });
