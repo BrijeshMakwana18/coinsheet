@@ -527,26 +527,6 @@ class AddExpense extends Component {
                 }}
               />
             </Animated.View>
-            {/* <Animated.View style={styles.payeeInputContainer}>
-              <TextInput
-                contextMenuHidden={true}
-                style={[
-                  styles.textInput,
-                  Platform.OS == 'android' && {fontWeight: 'normal'},
-                ]}
-                placeholderTextColor="rgba(255,255,255,0.3)"
-                selectionColor={colors.primary}
-                placeholder={payeePlaceholder}
-                onChangeText={payee => this.setState({payee: payee})}
-                value={this.state.payee}
-                returnKeyType="next"
-                onSubmitEditing={() => this.notesInput.focus()}
-                blurOnSubmit={false}
-                ref={input => {
-                  this.payeeInout = input;
-                }}
-              />
-            </Animated.View> */}
             <Animated.View
               style={[
                 styles.notesInputContainer,
