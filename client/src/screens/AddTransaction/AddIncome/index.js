@@ -415,7 +415,7 @@ class AddIncome extends Component {
                   <Text style={styles.incomeTypeButtonTitle}>{dividend}</Text>
                 </TouchableOpacity>
               </View>
-              <View style={styles.incomeTypeButtonsContainer}>
+              {/* <View style={styles.incomeTypeButtonsContainer}>
                 <TouchableOpacity
                   onPress={() =>
                     this.setState({
@@ -433,7 +433,7 @@ class AddIncome extends Component {
                   ]}>
                   <Text style={styles.incomeTypeButtonTitle}>{freelance}</Text>
                 </TouchableOpacity>
-              </View>
+              </View> */}
             </Animated.View>
             <Button
               title={buttonTitle}
