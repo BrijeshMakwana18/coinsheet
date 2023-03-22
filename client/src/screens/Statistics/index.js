@@ -32,6 +32,7 @@ const {width, height} = Dimensions.get('window');
 const CIRCLE_LENGTH = 450; // 2PI*R
 const R = CIRCLE_LENGTH / (2 * Math.PI);
 const AnimatedCircle = Animated.createAnimatedComponent(Circle);
+
 const Statistics = props => {
   const needs = useSharedValue(0);
   const wants = useSharedValue(0);
@@ -43,7 +44,8 @@ const Statistics = props => {
   const wantsPercent = dashboardData.stat.wants.total / totalIncome;
   const investmentsPercent = dashboardData.stat.investments.total / totalIncome;
   const savingsPercent = dashboardData.stat.savings.total / totalIncome;
-  const animatedProps = type => {
+
+  const AnimatedProps = type => {
     return useAnimatedProps(() => ({
       strokeDashoffset: CIRCLE_LENGTH * (1 - type?.value),
     }));
@@ -62,7 +64,16 @@ const Statistics = props => {
     savings.value = withTiming(savingsPercent, {
       duration: 2000,
     });
-  }, []);
+  }, [
+    investments,
+    investmentsPercent,
+    needs,
+    needsPercent,
+    savings,
+    savingsPercent,
+    wants,
+    wantsPercent,
+  ]);
 
   return (
     <SafeAreaView style={styles.container}>
@@ -83,7 +94,7 @@ const Statistics = props => {
               stroke={STROKE_COLOR}
               strokeWidth={15}
               strokeDasharray={CIRCLE_LENGTH}
-              animatedProps={animatedProps(needs)}
+              animatedProps={AnimatedProps(needs)}
               strokeLinecap={'round'}
             />
           </Svg>
@@ -111,7 +122,7 @@ const Statistics = props => {
               stroke={STROKE_COLOR}
               strokeWidth={15}
               strokeDasharray={CIRCLE_LENGTH}
-              animatedProps={animatedProps(wants)}
+              animatedProps={AnimatedProps(wants)}
               strokeLinecap={'round'}
             />
           </Svg>
@@ -141,7 +152,7 @@ const Statistics = props => {
               stroke={STROKE_COLOR}
               strokeWidth={15}
               strokeDasharray={CIRCLE_LENGTH}
-              animatedProps={animatedProps(investments)}
+              animatedProps={AnimatedProps(investments)}
               strokeLinecap={'round'}
             />
           </Svg>
@@ -169,7 +180,7 @@ const Statistics = props => {
               stroke={STROKE_COLOR}
               strokeWidth={15}
               strokeDasharray={CIRCLE_LENGTH}
-              animatedProps={animatedProps(savings)}
+              animatedProps={AnimatedProps(savings)}
               strokeLinecap={'round'}
             />
           </Svg>
