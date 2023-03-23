@@ -43,6 +43,8 @@ const colors = {
   debitTransactionAmountColor: 'white',
   positiveColor: '#B4FF9F',
   negativeColor: '#FD5D5D',
+  backgroundStrokeColor: '#303858',
+  strokeColor: '#A6E1FA',
 };
 
 export default colors;

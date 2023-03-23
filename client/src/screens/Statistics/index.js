@@ -23,10 +23,6 @@ import Animated, {
   withTiming,
 } from 'react-native-reanimated';
 
-const BACKGROUND_COLOR = '#444B6F';
-const BACKGROUND_STROKE_COLOR = '#303858';
-const STROKE_COLOR = '#A6E1FA';
-
 const {width, height} = Dimensions.get('window');
 
 const CIRCLE_LENGTH = 450; // 2PI*R
@@ -84,14 +80,14 @@ const Statistics = props => {
               cx={width / 4.2}
               cy={height / 6}
               r={R}
-              stroke={BACKGROUND_STROKE_COLOR}
+              stroke={colors.backgroundStrokeColor}
               strokeWidth={25}
             />
             <AnimatedCircle
               cx={width / 4.2}
               cy={height / 6}
               r={R}
-              stroke={STROKE_COLOR}
+              stroke={colors.strokeColor}
               strokeWidth={15}
               strokeDasharray={CIRCLE_LENGTH}
               animatedProps={AnimatedProps(needs)}
@@ -112,14 +108,14 @@ const Statistics = props => {
               cx={width / 4.2}
               cy={height / 6}
               r={R}
-              stroke={BACKGROUND_STROKE_COLOR}
+              stroke={colors.backgroundStrokeColor}
               strokeWidth={25}
             />
             <AnimatedCircle
               cx={width / 4.2}
               cy={height / 6}
               r={R}
-              stroke={STROKE_COLOR}
+              stroke={colors.strokeColor}
               strokeWidth={15}
               strokeDasharray={CIRCLE_LENGTH}
               animatedProps={AnimatedProps(wants)}
@@ -142,14 +138,14 @@ const Statistics = props => {
               cx={width / 4.2}
               cy={height / 6}
               r={R}
-              stroke={BACKGROUND_STROKE_COLOR}
+              stroke={colors.backgroundStrokeColor}
               strokeWidth={25}
             />
             <AnimatedCircle
               cx={width / 4.2}
               cy={height / 6}
               r={R}
-              stroke={STROKE_COLOR}
+              stroke={colors.strokeColor}
               strokeWidth={15}
               strokeDasharray={CIRCLE_LENGTH}
               animatedProps={AnimatedProps(investments)}
@@ -170,14 +166,14 @@ const Statistics = props => {
               cx={width / 4.2}
               cy={height / 6}
               r={R}
-              stroke={BACKGROUND_STROKE_COLOR}
+              stroke={colors.backgroundStrokeColor}
               strokeWidth={25}
             />
             <AnimatedCircle
               cx={width / 4.2}
               cy={height / 6}
               r={R}
-              stroke={STROKE_COLOR}
+              stroke={colors.strokeColor}
               strokeWidth={15}
               strokeDasharray={CIRCLE_LENGTH}
               animatedProps={AnimatedProps(savings)}
