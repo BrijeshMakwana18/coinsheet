@@ -411,14 +411,14 @@ router.post("/", authenticateToken, async (req, res) => {
         ]);
         currentMonthsCategories.push({
           cat: transactionCategories[j],
-          total: temp?.[0]?.sum || 0,
+          total: parseFloat(temp?.[0]?.sum || 0).toFixed(2),
         });
       }
       const currentMonthStats = {
-        expenses: currentMonthExpenses?.[0]?.sum,
-        needs: currentMonthNeeds?.[0]?.sum,
-        wants: currentMonthWants?.[0]?.sum,
-        investments: monthInvestment?.[0]?.sum,
+        expenses: parseFloat(currentMonthExpenses?.[0]?.sum).toFixed(2),
+        needs: parseFloat(currentMonthNeeds?.[0]?.sum).toFixed(2),
+        wants: parseFloat(currentMonthWants?.[0]?.sum).toFixed(2),
+        investments: parseFloat(monthInvestment?.[0]?.sum).toFixed(2),
         currentMonthsCategories: currentMonthsCategories,
       };
       monthlyStats.push(currentMonthStats);
@@ -467,6 +467,7 @@ router.post("/", authenticateToken, async (req, res) => {
 
     res.send(response);
   } catch (e) {
+    console.log(e);
     let error = {
       success: false,
       error: e,
