@@ -425,7 +425,7 @@ router.post("/", authenticateToken, async (req, res) => {
     }
 
     let response = {
-      responseType: monthlyIntervals,
+      responseType: true,
       error: false,
       balance: totalIncome - totalExpense - totalInvestment?.[0]?.sum,
       totalIncome: totalIncome,
