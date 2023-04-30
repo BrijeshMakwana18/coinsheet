@@ -44,6 +44,12 @@ export default styles = StyleSheet.create({
     //fontFamily: fonts.quicksandBold,
     color: colors.titleColor,
   },
+  monthTitleStyle: {
+    fontSize: perfectSize(18),
+    fontWeight: 'bold',
+    // fontFamily: fonts.quicksandBold,
+    color: colors.titleColor,
+  },
   dashboardInnerContainer: {
     width: '70%',
     flexDirection: 'row',

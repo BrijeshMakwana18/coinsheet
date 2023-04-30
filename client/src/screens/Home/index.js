@@ -33,18 +33,18 @@ import {
 } from '../../utils/globalMethods';
 import {encrypt, decryptV1} from '../../configs';
 let months = [
-  'Jan',
-  'Feb',
-  'Mar',
-  'Apr',
+  'January',
+  'Febuary',
+  'March',
+  'April',
   'May',
-  'Jun',
-  'Jul',
-  'Aug',
-  'Sep',
-  'Oct',
-  'Nov',
-  'Dec',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December',
 ];
 class Home extends Component {
   constructor(props) {
@@ -286,37 +286,15 @@ class Home extends Component {
     const {needs, wants, totalExpense} = strings.homeScreen;
     return (
       <TouchableOpacity
-        onPress={() => console.log(this.props.AppReducer)}
-        style={[
-          styles.dashboardContainer,
-          {
-            backgroundColor:
-              index === 0
-                ? colors.activeButtonBackgroundColor
-                : colors.secondaryBackgroundColor,
-          },
-        ]}>
-        <Text style={styles.myBalanceTitle}>
-          {totalExpense}
-          {` - ${months[
+        onPress={() =>
+          this.props.navigation.navigate('MonthDashboard', {item: item})
+        }
+        style={styles.dashboardContainer}>
+        <Text style={styles.monthTitleStyle}>
+          {`${months[
             new Date().getMonth() - index
           ].toUpperCase()} ${new Date().getFullYear()}`}
         </Text>
-        <Text style={styles.myBalanceStyle}>{item.expenses}</Text>
-        <View style={styles.dashboardInnerContainer}>
-          <View style={styles.investmentContainer}>
-            <View>
-              <Text style={styles.dashboardInvestmentHeaderStyle}>{needs}</Text>
-              <Text style={styles.dashboardInvestmentStyle}>{item.needs}</Text>
-            </View>
-          </View>
-          <View style={styles.expenseContainer}>
-            <View>
-              <Text style={styles.dashboardExpenseHeaderStyle}>{wants}</Text>
-              <Text style={styles.dashboardExpenseStyle}>{item.wants}</Text>
-            </View>
-          </View>
-        </View>
       </TouchableOpacity>
     );
   };
