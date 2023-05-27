@@ -11,6 +11,7 @@ import {
   AllExpenseCat,
   TransactionSuccess,
   InvestmentProfitLoss,
+  MonthDashboard,
 } from '../screens';
 const Stack = createStackNavigator();
 
@@ -56,6 +57,11 @@ export default function DashboardStack() {
       <Stack.Screen
         name="TransactionSuccess"
         component={TransactionSuccess}
+        options={{header: () => null}}
+      />
+      <Stack.Screen
+        name="MonthDashboard"
+        component={MonthDashboard}
         options={{header: () => null}}
       />
     </Stack.Navigator>

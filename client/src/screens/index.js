@@ -10,6 +10,7 @@ import TransactionSuccess from './TransactionSuccess';
 import TransactionList from './TransactionList';
 import AllExpenseCat from './AllExpenseCat';
 import InvestmentProfitLoss from './AddTransaction/InvestmentProfitLoss';
+import MonthDashboard from './MonthDashboard';
 export {
   Launch,
   Login,
@@ -23,4 +24,5 @@ export {
   TransactionList,
   AllExpenseCat,
   InvestmentProfitLoss,
+  MonthDashboard,
 };

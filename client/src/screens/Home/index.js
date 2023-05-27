@@ -33,18 +33,18 @@ import {
 } from '../../utils/globalMethods';
 import {encrypt, decryptV1} from '../../configs';
 let months = [
-  'January',
-  'Febuary',
-  'March',
-  'April',
+  'Jan',
+  'Feb',
+  'Mar',
+  'Apr',
   'May',
-  'June',
-  'July',
-  'August',
-  'September',
-  'October',
-  'November',
-  'December',
+  'Jun',
+  'Jul',
+  'Aug',
+  'Sep',
+  'Oct',
+  'Nov',
+  'Dec',
 ];
 class Home extends Component {
   constructor(props) {
